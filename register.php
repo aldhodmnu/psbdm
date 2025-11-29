@@ -20,8 +20,6 @@
 
     <style>
         .terms-container {
-            max-height: 400px;
-            overflow-y: auto;
             background-color: #f8f9fa;
             border: 1px solid #e9ecef;
             border-radius: 8px;
@@ -40,6 +38,14 @@
             padding-left: 1rem;
             margin-bottom: 1.5rem;
             color: var(--text-dark);
+        }
+        .highlight-term {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -73,8 +79,15 @@
                             <li>Berperan sebagai Wali Santri yang proaktif dan melepaskan segala atribut atau jabatan yang dapat mengganggu disiplin dan nama baik Pesantren.</li>
                             <li>Menerima tindakan disiplin dari Pesantren, Sekolah, atau Organisasi Santri sesuai tata tertib.</li>
                             <li>Menyetujui bahwa Santri dapat tidak naik kelas di sekolah, atau dokumen rapor/ijazah ditunda penyerahannya jika ada tunggakan iuran atau kompetensi pembelajaran yang belum terpenuhi.</li>
-                            <li class="text-danger font-weight-bold">Bersedia melakukan pembayaran Pendaftaran, Daftar Ulang serta Biaya lainnya melalui Bank Darul Ma’arif. Uang yang sudah kami bayarkan tidak akan kami ambil kembali.</li>
                         </ol>
+                        
+                        <div class="highlight-term">
+                            <p class="text-danger font-weight-bold mb-0">
+                                <i class="fas fa-exclamation-triangle mr-2"></i>POIN PENTING:
+                                <br>
+                                9. Bersedia melakukan pembayaran Pendaftaran, Daftar Ulang serta Biaya lainnya melalui Bank Darul Ma’arif. Uang yang sudah kami bayarkan tidak akan kami ambil kembali.
+                            </p>
+                        </div>
 
                         <p class="mt-3">Demikian surat pernyataan ini kami buat dengan sebenar-benarnya tanpa ada paksaan dari pihak manapun dan dapat dipergunakan sebagaimana mestinya.</p>
                         <p>Saya telah membaca, memahami, dan bersedia mematuhi, melaksankan dan mengikuti semua panduan, aturan, tata tertib, serta siap menerima konsekuensinya.</p>
