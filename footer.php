@@ -9,9 +9,10 @@
                 </p>
             </div>
             <div class="col-md-6 text-center text-md-right">
-                <a href="https://www.facebook.com/pontrendarulmaarif/" class="text-secondary mx-2"><i class="fab fa-facebook fa-lg"></i></a>
-                <a href="https://www.instagram.com/pontrendarulmaarif/" class="text-secondary mx-2"><i class="fab fa-instagram fa-lg"></i></a>
-                <a href="https://www.youtube.com/channel/UCexample" class="text-secondary mx-2"><i class="fab fa-youtube fa-lg"></i></a>
+                <a href="https://web.facebook.com/people/Pondok-Pesantren-Darul-Maarif-Kaplongan/100064075593769/" target="_blank" class="text-secondary mx-2"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="https://www.instagram.com/pontrendarulmaarif/" target="_blank" class="text-secondary mx-2"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="https://www.tiktok.com/@pontrendarulmaarif" target="_blank" class="text-secondary mx-2"><i class="fab fa-tiktok fa-lg"></i></a>
+                <a href="https://www.youtube.com/channel/UC-bzz6M--Qtw0YvoTJwiv6Q" target="_blank" class="text-secondary mx-2"><i class="fab fa-youtube fa-lg"></i></a>
             </div>
         </div>
     </div>
