@@ -19,6 +19,15 @@ $cekusername = mysqli_query($db, "SELECT * FROM pendaftaran WHERE id='$_SESSION[
         { 
 ?>
 
+<script>
+    // Track InitiateCheckout when user arrives at the form
+    fbq('track', 'InitiateCheckout', {
+        content_name: 'Formulir Pendaftaran Santri Baru',
+        currency: 'IDR',
+        value: 995000
+    });
+</script>
+
 <style>
     .section-header {
         border-bottom: 2px solid var(--primary-green);

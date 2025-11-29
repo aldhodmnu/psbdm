@@ -255,13 +255,25 @@ function copyToClipboard(elementId) {
                         </div>
                     </div>
                     
-                    <p class="mb-2 font-weight-bold">Kirim Konfirmasi ke:</p>
+                    <p class="mb-2 font-weight-bold">Kirim Konfirmasi ke salah satu nomor berikut:</p>
                     <div class="d-flex flex-wrap">
-                        <a href="#" id="btn_wa_dm" target="_blank" class="btn btn-success mb-2 mr-2 shadow-sm">
-                            <i class="fab fa-whatsapp mr-1"></i> Kirim ke Bank DM
+                        <a href="#" id="btn_wa_dm" target="_blank" class="btn btn-success mb-2 mr-2 shadow-sm text-left">
+                            <div class="d-flex align-items-center">
+                                <i class="fab fa-whatsapp fa-2x mr-2"></i>
+                                <div>
+                                    <div class="font-weight-bold">0853-1494-3737</div>
+                                    <small>a.n Bank Darul Ma’arif</small>
+                                </div>
+                            </div>
                         </a>
-                        <a href="#" id="btn_wa_bendahara" target="_blank" class="btn btn-outline-success mb-2 shadow-sm">
-                            <i class="fab fa-whatsapp mr-1"></i> Kirim ke Bendahara
+                        <a href="#" id="btn_wa_bendahara" target="_blank" class="btn btn-outline-success mb-2 shadow-sm text-left">
+                            <div class="d-flex align-items-center">
+                                <i class="fab fa-whatsapp fa-2x mr-2"></i>
+                                <div>
+                                    <div class="font-weight-bold">0895-3736-30990</div>
+                                    <small>a.n Bendahara (Jihan K.T)</small>
+                                </div>
+                            </div>
                         </a>
                     </div>
                     <small class="text-muted font-italic">*Pastikan nominal transfer sesuai dengan yang tertera di Step 2 (Kode Unik).</small>

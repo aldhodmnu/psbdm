@@ -47,6 +47,16 @@ if(isset($_SESSION['sesi'])){
         $data2 = mysqli_fetch_array($query2);   
 ?>
 
+<script>
+    // Track Purchase when user reaches this status page (meaning form is submitted)
+    fbq('track', 'Purchase', {
+        content_name: 'Pendaftaran Berhasil - Menunggu Pembayaran/Verifikasi',
+        currency: 'IDR',
+        value: 995000,
+        content_type: 'product'
+    });
+</script>
+
 <style>
     .status-card {
         transition: all 0.3s ease;

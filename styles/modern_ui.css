@@ -207,12 +207,22 @@ a:hover {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .card-body {
-        padding: 1.5rem;
+        padding: 1.25rem; /* Reduced from 1.5rem/2rem for better space usage */
+    }
+    
+    .card-header {
+        padding: 1rem;
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
     }
     
     .btn {
         width: 100%;
         margin-bottom: 0.5rem;
+        padding: 10px 20px; /* Slightly smaller padding for mobile buttons */
     }
     
     .navbar-collapse {
@@ -220,13 +230,39 @@ a:hover {
         padding: 1rem;
         border-radius: 0 0 12px 12px;
         margin-top: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     
     .navbar-collapse .nav-link {
         color: white !important;
+        padding: 10px 15px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
+    .navbar-collapse .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    h1 { font-size: 1.75rem; }
     h2 { font-size: 1.5rem; }
     h3 { font-size: 1.25rem; }
     h4 { font-size: 1.1rem; }
+    
+    .display-4 {
+        font-size: 2.5rem; /* Smaller huge text for mobile */
+    }
+    
+    .step-card {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .form-control {
+        font-size: 14px; /* Prevent zoom on some devices, readable enough */
+    }
 }
