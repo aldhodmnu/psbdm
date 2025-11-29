@@ -16,10 +16,16 @@ $angka2 =number_format($_SESSION['sesi']);
     include_once 'header.php';
 
 $idlog= $_SESSION['sesi'];
+$namasantri = "";
+$jenjang_santri = "";
+
 $query = mysqli_query($db, "SELECT * FROM pendaftaran WHERE id='$_SESSION[sesi]'");
     //$data = mysqli_fetch_array($query); 
     while ($result=mysqli_fetch_array($query))
-   { $namasantri=$result["nama"];}    
+   { 
+       $namasantri=$result["nama"];
+       $jenjang_santri=$result["jenjang"]; 
+   }    
 $query2 = mysqli_query($db, "SELECT * FROM user WHERE id='$_SESSION[sesi]'");
    // $data2 = mysqli_fetch_array($query2);   
      while ($result2=mysqli_fetch_array($query2))
@@ -41,6 +47,16 @@ $jumlah = $angka1 + $angka2;
         else if($dataGEL == "TERAKHIR") 
         {$dataGEL2="5";}    
    
+    // Persiapan Data untuk Format WA
+    $wa_nama_pendaftar = $namasantri ?: "[Nama Pendaftar]";
+    $wa_nama_pengirim = $namawali ?: "[Nama Pengirim]";
+    $wa_tgl_transfer = date('d/m/Y');
+    $wa_jumlah = number_format($jumlah, 0, ',', '.');
+    $wa_gelombang = $dataGEL2;
+    $wa_jenjang = $jenjang_santri ?: "[Jenjang]";
+
+    $pesan_wa_template = "TRANSAKSI {$wa_nama_pendaftar} {$wa_nama_pengirim} {$wa_tgl_transfer} {$wa_jumlah} PENDAFTAR PSB GEL {$wa_gelombang} {$wa_jenjang} PP. Darul Ma'arif";
+    $pesan_wa_url = rawurlencode($pesan_wa_template);
 ?>
  
 <!-- container -->
@@ -135,15 +151,54 @@ $jumlah = $angka1 + $angka2;
                 <div class="step-number flex-shrink-0">3</div>
                 <div class="w-100">
                     <h5 class="font-weight-bold text-dark">Konfirmasi Pembayaran</h5>
-                    <p class="mb-2">Kirim bukti transfer via WhatsApp dengan format:</p>
+                    <p class="mb-3">Setelah melakukan transfer, silakan konfirmasi dengan menekan tombol WA di bawah. Data berikut akan otomatis dimuat ke pesan WhatsApp Anda.</p>
                     
-                    <div class="alert alert-warning border-0 shadow-sm text-dark">
-                        <strong>TRANSAKSI/<?php echo $namasantri ?: 'NAMA_SANTRI'; ?>/<?php echo $namawali ?: 'NAMA_WALI';?>/<?php echo date('Y-m-d'); ?>/<?php echo number_format($jumlah, 0, ',', '.');?>/<?php echo $dataGEL2; ?></strong>
+                    <div class="card border-0 shadow-sm bg-light mb-3">
+                        <div class="card-body p-3">
+                            <h6 class="font-weight-bold text-dark mb-3"><i class="fas fa-file-alt mr-2"></i> Preview Data Konfirmasi</h6>
+                            <form>
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-2">
+                                        <label class="small text-muted font-weight-bold mb-0">Nama Pendaftar</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" value="<?php echo $wa_nama_pendaftar; ?>" readonly>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <label class="small text-muted font-weight-bold mb-0">Nama Pengirim (Wali)</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" value="<?php echo $wa_nama_pengirim; ?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-2">
+                                        <label class="small text-muted font-weight-bold mb-0">Tanggal Transfer</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" value="<?php echo $wa_tgl_transfer; ?>" readonly>
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <label class="small text-muted font-weight-bold mb-0">Nominal Transfer</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" value="Rp. <?php echo $wa_jumlah; ?>" readonly>
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <label class="small text-muted font-weight-bold mb-0">Gelombang</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" value="<?php echo $wa_gelombang; ?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label class="small text-muted font-weight-bold mb-0">Pesan Otomatis (Dikirim ke WA)</label>
+                                    <textarea class="form-control bg-white text-success font-weight-bold" rows="2" readonly><?php echo $pesan_wa_template; ?></textarea>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     
-                    <p class="mb-2 font-weight-bold">Kirim ke salah satu nomor:</p>
-                    <a href="https://wa.me/6285314943737" target="_blank" class="btn btn-success btn-sm mb-2 mr-2"><i class="fab fa-whatsapp mr-1"></i> 0853-1494-3737 (Bank DM)</a>
-                    <a href="https://wa.me/62895373630990" target="_blank" class="btn btn-success btn-sm mb-2"><i class="fab fa-whatsapp mr-1"></i> 0895-3736-30990 (Bendahara)</a>
+                    <p class="mb-2 font-weight-bold">Kirim Konfirmasi ke:</p>
+                    <div class="d-flex flex-wrap">
+                        <a href="https://wa.me/6285314943737?text=<?php echo $pesan_wa_url; ?>" target="_blank" class="btn btn-success mb-2 mr-2 shadow-sm">
+                            <i class="fab fa-whatsapp mr-1"></i> 0853-1494-3737 (Bank DM)
+                        </a>
+                        <a href="https://wa.me/62895373630990?text=<?php echo $pesan_wa_url; ?>" target="_blank" class="btn btn-outline-success mb-2 shadow-sm">
+                            <i class="fab fa-whatsapp mr-1"></i> 0895-3736-30990 (Bendahara)
+                        </a>
+                    </div>
+                    <small class="text-muted font-italic">*Pilih salah satu nomor tujuan saja.</small>
                 </div>
             </div>
             
