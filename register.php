@@ -13,192 +13,158 @@
 
     <!-- Css Bootstrap -->
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
+    <!-- Modern UI -->
+    <link rel="stylesheet" href="styles/modern_ui.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <!-- css register -->
-    <link rel="stylesheet" href="styles/register.css">
+    <style>
+        .terms-container {
+            max-height: 400px;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .terms-list {
+            padding-left: 1.2rem;
+        }
+        .terms-list li {
+            margin-bottom: 0.8rem;
+            text-align: justify;
+        }
+        .section-title {
+            border-left: 4px solid var(--primary-green);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+    </style>
 </head>
 
 <body>
 
 <!-- container -->
-    
-<!-- container -->
-<div class="container">
-    <form class="card m-4 p-4 o-hidden border-0 shadow-lg" method="post" action="proses/proses_register.php" enctype="multipart/form-data">
+<div class="container py-4">
+    <form class="card shadow-lg border-0" method="post" action="proses/proses_register.php" enctype="multipart/form-data">
         
-        <!-- heading -->
-        
-         <div class="text-secondary text-center"><img src="dmlogo.png" alt="" style="width:100px;height:100px;"> <p></p></div> 
-        <div class="text-center">
-     
-            <h4 class="m-0 font-weight-bold text-center text-dark">FORMULIR PERNYATAAN TANGGUNG JAWAB MUTLAK<br>(WALI/SANTRI) </h4>
-        
-       
-        
-        <fieldset>
-            <br>
-            <div class="text-left">
-                
-       <div class="card my-9 o-hidden border-0 shadow-lg">
-        <div class="card-header border-0 shadow-lg py-1">
+        <div class="card-body p-4 p-md-5">
+            <!-- heading -->
+            <div class="text-center mb-4">
+                <img src="dmlogo.png" alt="Logo" style="width:80px;height:80px;" class="mb-3">
+                <h4 class="font-weight-bold text-dark">FORMULIR PERNYATAAN TANGGUNG JAWAB MUTLAK<br>(WALI/SANTRI)</h4>
+            </div>
             
-            
-       Dengan ini menyatakan menyerahkan sepenuhnya anak kami kepada Pondok Pesantren Darul Ma’arif,
-Kaplongan, Kec. Karangampel, Kab. Indramayu, dengan <b>KOMITMEN</b> dan <b>KESANGGUPAN</b> sebagai
-berikut:
-<br><br>
-1. Menjaga nama baik Yayasan dan Pesantren di segala waktu dan tempat; baik secara lisan, tulisan,
-maupun di berbagai media.
-<br>
-2. Mentaati semua kebijakan, tata tertib, disiplin Pesantren dan Sekolah, serta menerima konsekuensi
-dari pelanggaran.
-<br>
-3. Memenuhi kewajiban administrasi dan lainnya sesuai ketentuan yang berlaku.
-<br>
-4. Tidak mencampuri manajemen, sistem pendidikan, atau administrasi Yayasan, Pesantren, Sekolah,
-Organisasi atau yang terkait.
-<br>
-5. Membayar semua iuran tepat waktu, dan iuran bulanan paling lambat tanggal 5 setiap bulan.
-<br>
-6. Berperan sebagai Wali Santri yang proaktif dan melepaskan segala atribut atau jabatan yang dapat
-mengganggu disiplin dan nama baik Pesantren.
-<br>
-7. Menerima tindakan disiplin dari Pesantren, Sekolah, atau Organisasi Santri sesuai tata tertib.
-<br>
-8. Menyetujui bahwa Santri dapat tidak naik kelas di sekolah, atau dokumen rapor/ijazah ditunda
-penyerahannya jika ada tunggakan iuran atau kompetensi pembelajaran yang belum terpenuhi.
-<br>
-9. Bersedia melakukan pembayaran Pendaftaran, Daftar Ulang serta Biaya lainnya melalui Bank Darul Ma’arif. Dan <b><em><font color="red" size=4>Uang yang sudah kami bayarkan tidak akan kami ambil kembali</font></b></em>.
+            <fieldset>
+                <div class="mb-4">
+                    <h5 class="section-title">Pernyataan & Kesepakatan</h5>
+                    
+                    <div class="terms-container">
+                        <p class="font-weight-bold">Dengan ini menyatakan menyerahkan sepenuhnya anak kami kepada Pondok Pesantren Darul Ma’arif, Kaplongan, Kec. Karangampel, Kab. Indramayu, dengan KOMITMEN dan KESANGGUPAN sebagai berikut:</p>
+                        
+                        <ol class="terms-list">
+                            <li>Menjaga nama baik Yayasan dan Pesantren di segala waktu dan tempat; baik secara lisan, tulisan, maupun di berbagai media.</li>
+                            <li>Mentaati semua kebijakan, tata tertib, disiplin Pesantren dan Sekolah, serta menerima konsekuensi dari pelanggaran.</li>
+                            <li>Memenuhi kewajiban administrasi dan lainnya sesuai ketentuan yang berlaku.</li>
+                            <li>Tidak mencampuri manajemen, sistem pendidikan, atau administrasi Yayasan, Pesantren, Sekolah, Organisasi atau yang terkait.</li>
+                            <li>Membayar semua iuran tepat waktu, dan iuran bulanan paling lambat tanggal 5 setiap bulan.</li>
+                            <li>Berperan sebagai Wali Santri yang proaktif dan melepaskan segala atribut atau jabatan yang dapat mengganggu disiplin dan nama baik Pesantren.</li>
+                            <li>Menerima tindakan disiplin dari Pesantren, Sekolah, atau Organisasi Santri sesuai tata tertib.</li>
+                            <li>Menyetujui bahwa Santri dapat tidak naik kelas di sekolah, atau dokumen rapor/ijazah ditunda penyerahannya jika ada tunggakan iuran atau kompetensi pembelajaran yang belum terpenuhi.</li>
+                            <li class="text-danger font-weight-bold">Bersedia melakukan pembayaran Pendaftaran, Daftar Ulang serta Biaya lainnya melalui Bank Darul Ma’arif. Uang yang sudah kami bayarkan tidak akan kami ambil kembali.</li>
+                        </ol>
 
-<br>
-<br>
-Demikian surat pernyataan ini kami buat dengan sebenar-benarnya tanpa ada paksaan dari pihak manapun dan dapat dipergunakan sebagaimana mestinya.
-<br><br>
-Saya telah membaca, memahami, dan bersedia mematuhi, melaksankan dan mengikuti semua panduan,
-aturan, tata tertib, serta siap menerima konsekuensinya.
-Surat ini dibuat dengan penuh kesadaran dan tanggung jawab untuk mendukung kelancaran pendidikan di
-Pondok Pesantren Darul Ma’arif, semoga Allah selalu memberikan taufiq dan hidayah-Nya kepada kita semua.
-Amin.
- <p></p> <p></p> 
-               <br> 
-			
-		   </div>
-               
-           </div>
-            
-			
-               </div>
-			</fieldset>   
-               
-       <div class="card my-9 o-hidden border-0 shadow-lg">
-        <div class="card-header border-0 shadow-lg py-2">
-            
-            <h5 class="m-0 font-weight-bold text-dark">
-                <i  color="green" class="fas fa-user-circle"></i>  
-              WALI SANTRI <font size="1"></font></h5>
-        </div>
-        <div class="card-body ">
-       
-       <div class="text-left">
-           
-           
- <div class="card-header border-0 shadow-lg py-2">
-            <input type="number" name="id" value="<?php echo $id_siswa; ?>" hidden>
-
-                <!-- input nama -->
-                 <div class="form-row">
-                     <div class="form-group col-md-4">
-                    <label for="wali" class="form-label">Nama Orang Tua/Wali </label>
-                     <input maxlength="40" type="text" class="form-control" name="wali" placeholder="Masukkan Nama Wali"required />
-                   
-                </div>
-                
-                
-                   
-               
-
-                
-                <!-- input tempat tanggal lahir -->
-               
-                    <div class="form-group col-md-4">
-                        <label for="tempat" class="form-label">Tempat Lahir Wali</label>
-                        <input maxlength="25" type="text" class="form-control" name="tempat" placeholder="Masukkan Kota Lahir Wali"required />
+                        <p class="mt-3">Demikian surat pernyataan ini kami buat dengan sebenar-benarnya tanpa ada paksaan dari pihak manapun dan dapat dipergunakan sebagaimana mestinya.</p>
+                        <p>Saya telah membaca, memahami, dan bersedia mematuhi, melaksankan dan mengikuti semua panduan, aturan, tata tertib, serta siap menerima konsekuensinya.</p>
+                        <p>Surat ini dibuat dengan penuh kesadaran dan tanggung jawab untuk mendukung kelancaran pendidikan di Pondok Pesantren Darul Ma’arif, semoga Allah selalu memberikan taufiq dan hidayah-Nya kepada kita semua. Amin.</p>
                     </div>
-					 
-					   <div class="form-group col-md-4">
-                    <label for="anak" class="form-label">Nama Calon Santri </label>
-                     <input maxlength="40" type="text" class="form-control" name="anak" placeholder="Masukkan Nama anak"required />
-                   </div>
-					 
-                    <div class="form-group col-md-4">
-                        <label for="tanggal" class="form-label">Tanggal Lahir Wali</label>
-                        <input type="date" class="form-control" name="tanggal"required />
+                    
+                    <div class="custom-control custom-checkbox mb-4">
+                        <input type="checkbox" class="custom-control-input" id="aggreeCheck" required>
+                        <label class="custom-control-label font-weight-bold text-primary-custom" for="aggreeCheck">Saya telah membaca dan menyetujui seluruh pernyataan di atas.</label>
                     </div>
-					 
-					  <div class="form-group col-md-8">
-                    <label for="alamat" class="form-label">Alamat</label>
-                    <input maxlength="200" type="text" class="form-control" name="alamat" placeholder="Masukan Alamat Lengkap" required />
                 </div>
-					 
-                </div>
-
-
-
-                <!-- input alamat -->
+            </fieldset>   
+               
+            <fieldset>
+                <h5 class="section-title"><i class="fas fa-user-edit mr-2"></i>Data Akun & Wali Santri</h5>
                 
-                <div class="form-row">                <!-- input Asal Sekolah -->
-                <div class="form-group col-md-4">
-                    <label for="telepon" class="form-label">Telepon</label>
-                    <input type="text" class="form-control" name="telepon" placeholder="Masukkan no telepon" required />
-                </div>
-                
-                <!-- input nama -->
-                 
-                 <div class="form-group col-md-4">
-                    <label for="name" class="form-label">Nama user login </label>
-                    <input maxlength="25" type="text" class="form-control form-control-user" id="name" name="name"
-                                placeholder="Nama User"required />
-                   
-                </div>
-                <!-- password -->
-                <div class="form-group col-md-4">
-                    <label for="pass" class="form-label">password login</label>
-                            <input maxlength="25" type="password" class="form-control form-control-user" id="pass" name="pass"
-                                placeholder="Password" required />
+                <div class="bg-light p-4 rounded mb-4">
+                    <input type="number" name="id" value="<?php echo $id_siswa; ?>" hidden>
+
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="wali" class="form-label">Nama Orang Tua/Wali <span class="text-danger">*</span></label>
+                            <input maxlength="40" type="text" class="form-control" name="wali" placeholder="Nama Lengkap Wali" required />
                         </div>
-                           
-			</div>
-               
-            </div>        
-       
-     </form>
-     
-     </div>
-    
+                        
+                        <div class="col-md-6 form-group">
+                            <label for="anak" class="form-label">Nama Calon Santri <span class="text-danger">*</span></label>
+                            <input maxlength="40" type="text" class="form-control" name="anak" placeholder="Nama Lengkap Santri" required />
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="tempat" class="form-label">Tempat Lahir Wali <span class="text-danger">*</span></label>
+                            <input maxlength="25" type="text" class="form-control" name="tempat" placeholder="Kota Kelahiran" required />
+                        </div>
+                        
+                        <div class="col-md-6 form-group">
+                            <label for="tanggal" class="form-label">Tanggal Lahir Wali <span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" name="tanggal" required />
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="alamat" class="form-label">Alamat Lengkap <span class="text-danger">*</span></label>
+                        <textarea class="form-control" name="alamat" rows="2" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota/Kabupaten" required maxlength="200"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telepon" class="form-label">Nomor Telepon/WA <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" name="telepon" placeholder="08xxxxxxxxxx" required />
+                    </div>
                 </div>
                 
+                <h5 class="section-title"><i class="fas fa-lock mr-2"></i>Buat Akun Login</h5>
+                <div class="bg-light p-4 rounded mb-4">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="name" class="form-label">Username <span class="text-danger">*</span></label>
+                            <input maxlength="25" type="text" class="form-control" id="name" name="name" placeholder="Buat Username Unik" required />
+                            <small class="text-muted">Gunakan nama panggilan atau kombinasi huruf dan angka.</small>
+                        </div>
+                        
+                        <div class="col-md-6 form-group">
+                            <label for="pass" class="form-label">Password <span class="text-danger">*</span></label>
+                            <input maxlength="25" type="password" class="form-control" id="pass" name="pass" placeholder="Buat Password" required />
+                            <small class="text-muted">Minimal 6 karakter, rahasia.</small>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-success btn-lg px-5 font-weight-bold shadow" name="submit">
+                    <i class="fas fa-check-circle mr-2"></i> SETUJU & DAFTAR
+                </button>
+                <p class="mt-3 text-muted small">
+                    Setelah klik tombol di atas, Anda akan diarahkan ke formulir biodata lengkap.
+                </p>
+            </div>
             
-            
-                    <!-- tombol submit   <div class="mb-3 text-center d-grid gap-md-2 mx-auto">  </div> -->
-              
-            <div class="text-center">
-        <button type="submit" class="btn btn-success btn-user" name="submit">SETUJU</button>
-        <br><p class=" text-center "><font size="1">Setelah menyetujui FORMULIR PERNYATAAN TANGGUNG JAWAB MUTLAK WALI/SANTRI. Bpk/Ibu akan di alihkan ke pengisian FORMULIR PENDAFTARAN santri baru.      </font></p>               
+            <div class="text-center mt-4 pt-3 border-top">
+                <p class="mb-0">Sudah punya akun? <a href="login.php" class="font-weight-bold text-primary-custom">Login di sini</a></p>
+            </div>
+        
         </div>
-       
-        
-         </div>                    
-                     
-
-                                                    <!-- login -->
-                        <p class=" text-center ">Sudah punya akun? <a class="text-decoration-none" href="login.php">Login</a></p>
-        
-
-    
-    
+    </form>
+</div>
     
 <?php
-
 include 'footer.php';
-
 ?>

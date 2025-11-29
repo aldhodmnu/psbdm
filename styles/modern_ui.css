@@ -1,0 +1,232 @@
+/* Modern UI Redesign for PSB Darul Ma'arif */
+/* Target Audience: Gen X Parents (Readable, Clean, Accessible) */
+
+:root {
+    --primary-green: #116646;
+    --primary-green-hover: #0e5238;
+    --accent-red: #D32F2F; /* High contrast red for importance */
+    --bg-light: #F4F6F8; /* Soft gray-blue background, easy on eyes */
+    --text-dark: #2D3748; /* Softer than pure black */
+    --text-muted: #6c757d;
+    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --border-radius: 12px;
+    --input-height: 50px; /* Taller inputs for easier tapping */
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px; /* Base font size increased for readability */
+    line-height: 1.6;
+}
+
+/* Typography Overrides */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-green);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: #4A5568;
+}
+
+a {
+    color: var(--primary-green);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--primary-green-hover);
+    text-decoration: underline;
+}
+
+/* Utilities */
+.text-important {
+    color: var(--accent-red) !important;
+    font-weight: bold;
+}
+
+.text-primary-custom {
+    color: var(--primary-green) !important;
+}
+
+.bg-primary-custom {
+    background-color: var(--primary-green) !important;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    background: #fff;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid #e3e6f0;
+    padding: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-green);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* Form Styling */
+.form-control {
+    border-radius: 8px;
+    height: var(--input-height);
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #e2e8f0;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(17, 102, 70, 0.2);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.custom-select {
+    height: var(--input-height);
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    font-size: 16px;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px;
+    font-weight: 600;
+    border-radius: 8px;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-success, .btn-primary {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.btn-success:hover, .btn-primary:hover {
+    background-color: var(--primary-green-hover);
+    border-color: var(--primary-green-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: #f6ad55; /* Softer orange */
+    border-color: #f6ad55;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    padding: 1rem 1rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.75rem 1rem !important;
+}
+
+/* Custom Steps for Index */
+.step-card {
+    border-left: 5px solid var(--primary-green);
+    background: #fff;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.step-card:hover {
+    transform: translateX(5px);
+}
+
+.step-number {
+    background: var(--primary-green);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Data Display (Status Page) */
+.data-row {
+    padding: 1rem 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.data-row:last-child {
+    border-bottom: none;
+}
+
+.data-label {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.data-value {
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .navbar-collapse {
+        background: var(--primary-green);
+        padding: 1rem;
+        border-radius: 0 0 12px 12px;
+        margin-top: 0.5rem;
+    }
+    
+    .navbar-collapse .nav-link {
+        color: white !important;
+    }
+
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    h4 { font-size: 1.1rem; }
+}

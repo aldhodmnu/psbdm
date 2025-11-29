@@ -14,9 +14,6 @@ if(isset($_SESSION['sesi'])) {
 $angka2 =number_format($_SESSION['sesi']);
     $header = "";
     include_once 'header.php';
-// memasukkan data 
-//<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="http://103.84.206.51:888/psbdm/images/asrama1.png?size=626&ext=png" alt="...">
-//
 
 $idlog= $_SESSION['sesi'];
 $query = mysqli_query($db, "SELECT * FROM pendaftaran WHERE id='$_SESSION[sesi]'");
@@ -29,8 +26,6 @@ $query2 = mysqli_query($db, "SELECT * FROM user WHERE id='$_SESSION[sesi]'");
    { $namawali=$result2["wali"];}    
 $jumlah = $angka1 + $angka2;
    
-
-        
         $query = mysqli_query($dm, "SELECT gelombang FROM m_semester ");
     $data = mysqli_fetch_array($query);
     $dataGEL = $data['gelombang'];
@@ -49,219 +44,137 @@ $jumlah = $angka1 + $angka2;
 ?>
  
 <!-- container -->
-<div class="container">
-<form class="card m-4 p-4 o-hidden border-0 shadow-lg">
-       <p></p><h2 class="text-secondary text-left"><img src="dmlogo.png" alt="" style="width:60;height:60px;"><font size=5>  Assalamu'alaikum, <?php echo $_SESSION['nama'];?></font> &nbsp;&nbsp;&nbsp;&nbsp;      </h2>
+<div class="container py-4">
     
-    
-     <div class="text-secondary text-right"><font size=2><i class="fas fa-calendar-alt"></i> &nbsp;<?php echo $currentDate2; ?></font></div> 
-    <p> </p>
-    
-<fieldset>   
-   
-        <div class="card my-9 o-hidden border-0 shadow-lg">
-        <div class="card-header border-0 shadow-lg py-2">
-<!-- form login --------------------------------------------------------------------->
-    <div class="text-left">
-            <h6 class="m-0 font-weight-bold text-dark"><i class="fa fa-check-circle"></i> PROSEDUR PENDAFTARAN SANTRI BARU GELOMBANG <?php echo $data['gelombang'];?></h6>
-      </div>      
+    <!-- Welcome Header -->
+    <div class="d-flex align-items-center justify-content-between mb-4 bg-white p-4 rounded shadow-sm">
+        <div class="d-flex align-items-center">
+            <img src="dmlogo.png" alt="" style="width:60px;height:60px;" class="mr-3">
+            <div>
+                <h4 class="mb-1 font-weight-bold text-dark">Assalamu'alaikum, <?php echo $_SESSION['nama'];?></h4>
+                <span class="text-muted small">Selamat datang di Sistem Penerimaan Santri Baru</span>
+            </div>
         </div>
-    <div class="card-body">
-     <div class="form-row">       
+        <div class="text-right d-none d-md-block">
+             <div class="text-secondary font-weight-bold"><i class="fas fa-calendar-alt mr-1"></i> <?php echo date('d M Y'); ?></div>
+        </div>
+    </div>
+
+    <!-- Gelombang Info -->
+    <div class="alert alert-success shadow-sm border-0 mb-4 d-flex align-items-center">
+        <i class="fas fa-info-circle fa-2x mr-3"></i>
+        <div>
+            <h6 class="font-weight-bold mb-0">GELOMBANG PENDAFTARAN SAAT INI: <?php echo $data['gelombang'];?></h6>
+            <small>Silahkan ikuti prosedur pendaftaran di bawah ini secara berurutan.</small>
+        </div>
+    </div>
+
+    <!-- Steps Container -->
+    <div class="row">
+        <div class="col-12">
             
-<br>
-<p>
-1. Calon Santri Baru mendaftar/register via online melaui link  
-  <?
-if($idlog<>1){
-?>
-<a href="http://103.84.206.51:888/psbdm/login.php" target="_blank"> <font color="green">REGISTER</font></a>
-  (1 peserta didik 1 id login, bisa mendaftarkan lebih dari 1 peserta dengan username dan password berbeda saat register).                 
-  <?php
-                } else {
-    // Process form data here
-   echo " REGISTER (1 peserta didik 1 id login, bisa mendaftarkan lebih dari 1 peserta dengan username dan password berbeda saat register).";
-}
-?>
-           </p>       
-  
-    
-<p>       
-2. Login dengan username dan password saat register kemudian lakukan pengisian data pendaftaran di menu 
+            <!-- Step 1: Register & Daftar -->
+            <div class="step-card d-flex align-items-start">
+                <div class="step-number flex-shrink-0">1</div>
+                <div class="w-100">
+                    <h5 class="font-weight-bold text-dark">Registrasi & Pengisian Data</h5>
+                    <p class="mb-2">Calon Santri Baru wajib membuat akun dan melengkapi data pendaftaran.</p>
+                    <div class="mt-2">
+                        <a href="pendaftaran.php" class="btn btn-sm btn-success"><i class="fas fa-edit mr-1"></i> Isi Formulir Pendaftaran</a>
+                    </div>
+                </div>
+            </div>
 
-<?
-if($idlog<>1){
-?>
-<a href="http://103.84.206.51:888/psbdm/pendaftaran.php" target="_blank"><font color="green"> PENDAFTARAN</font>  </a>
-                  <?php
-                } else {
-    // Process form data here
-   echo "PENDAFTARAN";
-}
-?>
-           </p>     
-                
-                
+            <!-- Step 2: Pembayaran -->
+            <div class="step-card d-flex align-items-start">
+                <div class="step-number flex-shrink-0">2</div>
+                <div class="w-100">
+                    <h5 class="font-weight-bold text-dark">Pembayaran Administrasi</h5>
+                    <p class="mb-2">Lakukan pembayaran uang pendaftaran sebesar:</p>
+                    
+                    <div class="bg-light p-3 rounded border mb-3 d-inline-block">
+                        <h4 class="text-danger font-weight-bold mb-0">Rp. <?php echo number_format($jumlah, 0, ',', '.');?>,-</h4>
+                        <small class="text-muted font-italic">*3 digit terakhir adalah kode unik Anda</small>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card bg-white border-0 shadow-sm mb-2">
+                                <div class="card-body p-3">
+                                    <h6 class="font-weight-bold"><i class="fas fa-university mr-2 text-primary-custom"></i>Bank Mandiri</h6>
+                                    <p class="mb-0 h5 text-dark font-weight-bold">134-000-680-5815</p>
+                                    <small class="text-muted">a.n Darul Ma’arif</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-white border-0 shadow-sm mb-2">
+                                <div class="card-body p-3">
+                                    <h6 class="font-weight-bold"><i class="fas fa-university mr-2 text-primary-custom"></i>Bank BRI</h6>
+                                    <p class="mb-0 h5 text-dark font-weight-bold">0165-01-000704-56-7</p>
+                                    <small class="text-muted">a.n BDM Yayasan Darul Ma’arif</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 p-3 bg-info text-white rounded shadow-sm" style="opacity: 0.9;">
+                        <strong>Rincian Biaya:</strong><br>
+                        <ul class="mb-0 pl-3 small">
+                            <li>Pendaftaran Tes : Rp. 470.000,-</li>
+                            <li>Medical Check Up : Rp. 400.000,-</li>
+                            <li>Psikotes & Interview : Rp. 120.000,-</li>
+                            <li>Admin Bank : Rp. 5.000,-</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Step 3: Konfirmasi -->
+            <div class="step-card d-flex align-items-start">
+                <div class="step-number flex-shrink-0">3</div>
+                <div class="w-100">
+                    <h5 class="font-weight-bold text-dark">Konfirmasi Pembayaran</h5>
+                    <p class="mb-2">Kirim bukti transfer via WhatsApp dengan format:</p>
+                    
+                    <div class="alert alert-warning border-0 shadow-sm text-dark">
+                        <strong>TRANSAKSI/<?php echo $namasantri ?: 'NAMA_SANTRI'; ?>/<?php echo $namawali ?: 'NAMA_WALI';?>/<?php echo date('Y-m-d'); ?>/<?php echo number_format($jumlah, 0, ',', '.');?>/<?php echo $dataGEL2; ?></strong>
+                    </div>
+                    
+                    <p class="mb-2 font-weight-bold">Kirim ke salah satu nomor:</p>
+                    <a href="https://wa.me/6285314943737" target="_blank" class="btn btn-success btn-sm mb-2 mr-2"><i class="fab fa-whatsapp mr-1"></i> 0853-1494-3737 (Bank DM)</a>
+                    <a href="https://wa.me/62895373630990" target="_blank" class="btn btn-success btn-sm mb-2"><i class="fab fa-whatsapp mr-1"></i> 0895-3736-30990 (Bendahara)</a>
+                </div>
+            </div>
+            
+            <!-- Step 4: Tes -->
+            <div class="step-card d-flex align-items-start">
+                <div class="step-number flex-shrink-0">4</div>
+                <div class="w-100">
+                    <h5 class="font-weight-bold text-dark">Tes Seleksi & Pengumuman</h5>
+                    <p>Mengikuti tes sesuai jadwal (Psikotes, Interview, Praktek, Kesehatan). Hasil tes dapat dilihat pada menu Status.</p>
+                    <a href="status.php" class="btn btn-sm btn-info"><i class="fas fa-clipboard-check mr-1"></i> Cek Status Kelulusan</a>
+                </div>
+            </div>
 
+            <!-- Step 5: Daftar Ulang -->
+            <div class="step-card d-flex align-items-start">
+                <div class="step-number flex-shrink-0">5</div>
+                <div class="w-100">
+                    <h5 class="font-weight-bold text-dark">Daftar Ulang</h5>
+                    <p>Jika dinyatakan <strong>LULUS</strong>, segera selesaikan pembayaran daftar ulang.</p>
+                    <a href="biayadu.php" class="btn btn-sm btn-primary"><i class="fas fa-money-check-alt mr-1"></i> Lihat Biaya Daftar Ulang</a>
+                    
+                    <div class="mt-3 p-3 bg-light border rounded">
+                        <h6 class="font-weight-bold text-dark"><i class="fas fa-headset mr-2"></i>Butuh Bantuan?</h6>
+                        <p class="mb-2 small text-muted">Jika ada kesulitan, hubungi admin kami:</p>
+                        <a href="https://wa.me/6282219699610" target="_blank" class="btn btn-outline-success btn-sm"><i class="fab fa-whatsapp mr-1"></i> 0822-1969-9610 (Admin PSB)</a>
+                    </div>
+                </div>
+            </div>
 
-
-3. Membayar uang administrasi Pendaftaran sebesar  &nbsp;
-        <div class="card shadow mb-2">
-        <div class="card-header py-1">
-        <b>  <font color="red" size="4" >Rp.<?php echo number_format($jumlah, 0, ',', '.');?></font></b>,- 
-        </div>      
-        </div> &nbsp; (3 Digit Terakhir no unik untuk pengecekan ) </p>
-<br>
- </div> 
-       
- <div class="text-left">
-            <b>Transfer ke satu di antara No. Rekening berikut:</b> <br>
-            <i class="fa fa-institution"></i>
-            Bank Mandiri   <b>134-000-680-5815</b> a.n Darul Ma’arif<br>
-            <i class="fa fa-institution"></i>
-            Bank BRI <b>0165-01-000704-56-7</b> a.n BDM Yayasan Darul Ma’arif<p> </p>
-      </div>      
-dengan perincian sebagai berikut:
-<br>
-Pendaftaran Tes : Rp. 470.000,-
-Medical Check Up : Rp. 400.000,-
-Psikotes &amp; Interview : Rp. 120.000,-
-Admin Bank Darul Ma&#8217;arif: Rp. 5.000,-
-
-
- </div> 
-        
-</div> 
- 
-<!-- form login ---------------------------------------------------------------------> 
-<p></p>
-        <div class="card my-9 o-hidden border-0 shadow-lg">
-        <div class="card-header border-0 shadow-lg py-2">
-   <div class="text-secondary text-left">
-            <h6 class="m-0 font-weight-bold text-dark"><i class="fa fa-check-circle"></i> KONFIRMASI PEMBAYARAN ADMINISTRASI PENDAFTARAN</h6>
-        </div>  
         </div>
-    <div class="card-body">
-      <div class="text-center">
-Selanjutnya bukti pembayaran dikonfirmasikan via WA ke dua nomor berikut:
-<br><i class="fab fa-whatsapp"></i>
-<b>085314943737</b> a.n Bank Darul Ma’arif
-atau 
-<i class="fab fa-whatsapp"></i>
-<b>0895373630990</b> a.n Jihan Khotun Thohir (Bendahara PSB)
-<br>
-
-
-
- 
-      <br>
-        KIRIM KE WA KONFIRMASI:
-     <br>
-        <div class="card shadow mb-6">
-        <div class="card-header py-1">
-            <p><b><font color="red">TRANSAKSI 
-            /<?php echo $namasantri; ?>
-            /<?php echo $namawali;?>
-            /<?php echo $currentDate; ?> 
-            /<?php echo number_format($jumlah, 0, ',', '.');?>
-            /<?php echo $dataGEL2; ?> </font></b> 
-            </p>
-      
-        </div>  
-        </div> 
-
-        FORMAT:
-        <br> 
-     TRANSAKSI/CALONSANTRI/WALI/TANGGALTRANSFER/JUMLAH/GELOMBANG
-    
-        
-   </div>    
-   </div> 
- <br>
- </div> 
- <p></p>
- <!-- form login ---------------------------------------------------------------------> 
-        <div class="card my-9 o-hidden border-0 shadow-lg">
-        <div class="card-header border-0 shadow-lg py-2">
-   <div class="text-secondary text-left">
-            <h6 class="m-0 font-weight-bold text-dark"><i class="fa fa-check-circle"></i> TES DAN HASIL </h6>
-        </div>  </div>
-    <div class="card-body">
-4. Mengikuti tes Penerimaan Santri Baru sesuai jadwal dengan materi:
-<br>
-    Tes Psikotes & Interview,
-    tes Praktek & Lisan,
-    tes Kesehatan,
-    tes Kebugaran,
-    Medical Check Up
-    <br>
-<br>
-5. Hasil tes calon santri baru dinyatakan Lulus/Tidak Lulus akan diinformasikan panitia atau bisa di lihat pada menu  
-
-<?
-if($idlog<>1){
-?>
-<a href="http://103.84.206.51:888/psbdm/status.php" target="_blank"><font color="green">STATUS</font></a>
-                  <?php
-                } else {
-    // Process form data here
-   echo "STATUS";
-}
-?>
-             
-
-
-
-
-
-</div> 
- </div> 
-<p></p>
- <!-- form login ---------------------------------------------------------------------> 
-        <div class="card my-9 o-hidden border-0 shadow-lg">
-        <div class="card-header border-0 shadow-lg py-2">
-   <div class="text-secondary text-left">
-            <h6 class="m-0 font-weight-bold text-dark"><i class="fa fa-check-circle"></i> REGISTRASI DAFTAR ULANG </h6>
-        </div>  </div>
-    <div class="card-body">
-6. Apabila dinyatakan Lulus agar segera menyelesaikan pembayaran sesuai ketentuan pada laman <a href="biayadu.php" target="_blank"><font color="green">BIAYA REGISTRASI DAFTAR ULANG</font></a>
-
-<br>
-a. Via transfer ke:
-<br><i class="fa fa-institution"></i>
-Bank Mandiri <b>134-000-680-5815</b> a.n Darul Ma’arif atau
-<br><i class="fas fa-university"></i>
-Bank BRI <b>0165-01-000704-56-7</b> a.n BDM Yayasan Darul Ma’arif
-
-<br><br>
-Selanjutnya dikonfirmasikan via WA ke dua nomor berikut:
-<br><i class="fab fa-whatsapp"></i>
-<b>085314943737</b> a.n Bank Darul Ma’arif,
-<br><i class="fab fa-whatsapp"></i>
-<b>0895373630990</b> a.n Jihan Khotun Thohir (Bendahara PSB)
-<br><br>
-b. Datang langsung ke kantor BDM (Bank Darul Ma’arif)
-<br>
-Pastikan <b>LUNAS</b> sebelum batas akhir waktu per Gelombangnya agar mendapatkan <b>DISCOUNT</b>.
-<br>
-<br>
-7. Setelah menyelesaikan administrasi, santri masuk ke pesantren sesuai jadwal yang ditentukan kemudian;
-<br>
-Untuk informasi lebih lanjut, silahkan hubungi narahubung berikut ini:
-<br><i class="fab fa-whatsapp"></i>
-Admin PSB : <b>082219699610</b>
-<br>
-
-</div> 
- </div> 
-</fieldset>
-
-   
-   <br>
-   
-       
-    </form>
+    </div>
 </div>
 
 <?php

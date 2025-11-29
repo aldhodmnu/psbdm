@@ -19,603 +19,487 @@ $cekusername = mysqli_query($db, "SELECT * FROM pendaftaran WHERE id='$_SESSION[
         { 
 ?>
 
-<!-- container -->
-<div class="container">
-    <form class="card m-4 p-4 o-hidden border-0 shadow-lg" method="post" action="proses/proses_pendaftaran.php" enctype="multipart/form-data">
-        
-        <!-- heading -->
-        
-        
-         <div class="text-secondary text-center"><img src="dmlogo.png" alt="" style="width:100px;height:100px;"> <p></p></div> 
-         <h4 class="m-0 font-weight text-center text-dark">FORMULIR PENDAFTARAN SANTRI BARU </h4>
-        
-        
-        <p></p>
-        <fieldset>
-          
-           
+<style>
+    .section-header {
+        border-bottom: 2px solid var(--primary-green);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        color: var(--primary-green);
+        display: flex;
+        align-items: center;
+    }
+    .section-header i {
+        margin-right: 10px;
+    }
+</style>
 
+<!-- container -->
+<div class="container py-4">
+    <form class="card shadow-lg border-0" method="post" action="proses/proses_pendaftaran.php" enctype="multipart/form-data">
+        
+        <div class="card-body p-4 p-md-5">
+            <!-- heading -->
+            <div class="text-center mb-5">
+                <img src="dmlogo.png" alt="" style="width:80px;height:80px;" class="mb-3">
+                <h4 class="font-weight-bold text-dark">FORMULIR PENDAFTARAN SANTRI BARU</h4>
+                <p class="text-muted">Mohon isi data dengan lengkap dan benar.</p>
+            </div>
+            
             <input type="number" name="id" value="<?php echo $id_siswa; ?>" hidden>
             
-            <div class="card my-9 o-hidden border-0 shadow-lg">
-            <div class="card-header border-0 shadow-lg py-2">
-            <h5 class="m-0 font-weight-bold text-dark">
-            <i color="green" class="fas fa-book-reader"></i>    
-            
-            CALON SANTRI </h5>
-
-        </div>
-        <div class="card-body">
-                <!-- input nama -->
-        <div class="form-row">
-                     <div class="form-group col-md-3">
-                    <label for="name" class="form-label">NAMA LENGKAP</label>
-                    <input maxlength="40" type="text" class="form-control" name="nama" placeholder="" required />
-                    </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="noijasah" class="form-label">NO SERI IJAZAH</label>
-                    <input maxlength="10" type="number" class="form-control" name="noijasah" placeholder="" required />
-                     </div>
-                    <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="noskhun" class="form-label">NO SERI SKHUN</label>
-                    <input maxlength="25" type="number" class="form-control" name="noskhun" placeholder="" required />
-                     </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="nisn" class="form-label">NISN</label>
-                    <input maxlength="25" type="number" class="form-control" name="nisn" placeholder="" required />
-                    </div>
-        </div>
-        
-        
-                 <!-- input nama -->
-        <div class="form-row">
-                     <div class="form-group col-md-3">
-                    <label for="nik" class="form-label">NIK <font color="green" size="0.5" >WAJIB DI ISI </font></label>
-                    <input maxlength="25" type="number" class="form-control" name="nik" placeholder="" required />
-                    </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="nokk" class="form-label">NOMOR KK</label>
-                    <input maxlength="25" type="number" class="form-control" name="nokk" placeholder="" required />
-                     </div>
-                <!-- input tempat tanggal lahir -->
+            <!-- 1. DATA CALON SANTRI -->
+            <div class="mb-5">
+                <h5 class="section-header">
+                    <i class="fas fa-user-graduate fa-lg"></i> DATA PRIBADI SANTRI
+                </h5>
                 
-                    <div class="form-group col-md-3">
-                        <label for="ttl" class="form-label">TEMPAT LAHIR</label>
-                        <input maxlength="60" type="text" class="form-control" name="ttl" placeholder="" required />
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="name" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                        <input maxlength="40" type="text" class="form-control" name="nama" placeholder="Sesuai Akta Kelahiran" required />
                     </div>
-                    <div class="form-group col-md-3">
-                        <label for="ttg" class="form-label">TANGGAL LAHIR</label>
-                        <input type="date" class="form-control" name="ttg">
+                    <div class="col-md-6 form-group">
+                        <label for="nik" class="form-label">NIK (Nomor Induk Kependudukan) <span class="text-danger">*</span></label>
+                        <input maxlength="25" type="number" class="form-control" name="nik" placeholder="Lihat di Kartu Keluarga" required />
                     </div>
-        </div>
-        
-        
-          
-                 <!-- input  jenis kelamin -->
-        <div class="form-row">
-                     <div class="form-group col-md-3">
-                    <label for="jk" class="form-label">JENIS KELAMIN</label>
-                    <select id="jk" name="jk" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        <option value="L"selected>Laki laki</option>
-                        <option value="P">Perempuan</option>
-                    </select>
-                    </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="anak" class="form-label">ANAK KE</label>
-                    <input maxlength="2" type="number" class="form-control" name="anak" placeholder="" required />
-                     </div>
-                <!-- input tempat tanggal lahir -->
-                
-                    <div class="form-group col-md-3">
-                        <label for="saudara" class="form-label">JUMLAH SAUDARA</label>
-                        <input maxlength="20" type="number" class="form-control" name="saudara" placeholder="" required />
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="penyakit" class="form-label">Penyakit yang pernah diderita</label>
-                        <input maxlength="120" type="text" class="form-control" name="penyakit" placeholder="" required />
-                    </div>
-        </div>
-        
-        
-                   <!-- input nama -->
-        <div class="form-row">
-                     <div class="form-group col-md-3">
-                    <label for="nohp" class="form-label">NO HP Wali/Ortu</label>
-                    <input maxlength="13" type="number" class="form-control" name="nohp" placeholder="" required />
-                    </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="nowa" class="form-label">NO WHATSAPP Wali/Ortu</label>
-                    <input maxlength="13" type="number" class="form-control" name="nowa" placeholder="" required />
-                     </div>
-                    <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="ig" class="form-label">Instagram Wali/Ortu</label>
-                   <input maxlength="100" type="text" class="form-control" name="ig" placeholder="" required />
-                     </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="fb" class="form-label">Facebook Wali/Ortu</label>
-                    <input maxlength="100" type="text" class="form-control" name="fb" placeholder="" required />
-                    </div>
-        </div>
-        
-        
-           
-                 <!-- input  jenis kelamin -->
-        <div class="form-row">
-                     <div class="form-group col-md-4">
-                    <label for="mp" class="form-label">Masuk Pesantren ini sebagai</label>
-                    <select id="mp" name="mp" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        <option value="SB" selected>SANTRI BARU</option>
-                        <option value="SP" >SANTRI PINDAHAN</option>
-                        
-                    </select>
-                    </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-4">
-                    <label for="bb" class="form-label">BERAT / TINGGI BADAN</label>
-                    <input maxlength="25" type="text" class="form-control" name="bb" placeholder="" required />
-                     </div>
-                <!-- input tempat tanggal lahir -->
-                
-                    <div class="form-group col-md-4">
-                    <label for="sizeb" class="form-label">UKURAN BAJU</label>
-                    <select id="sizeb" name="sizeb" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        <option value="M" selected>M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                        <option value="XXL">XXL</option>
-                    </select>
-                    </div>
-                    
-        </div>
-        
-            </div>        
-        </fieldset>
-        
-        <p></p>
-<!-- MINAT -------------------------------------------------------------------------------------------------------------------->
-          </fieldset>
-              <div class="card my-9 o-hidden border-0 shadow-lg">
-               <div class="card-header border-0 shadow-lg py-2">
-                <h5 class="m-0 font-weight-bold text-dark">
-                    <i color="green" class="fas fa-award"></i>    
-                    KESEDIAAN | MINAT</h5>
                 </div>
-                <div class="card-body">
-    
-                   <!-- input nama -->
-        <div class="form-row">
-                     <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="exkul" class="form-label">MINAT EKSTRAKULIKULER </label>
-                    <select id="exkul" name="exkul" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        <option value="PRAMUKA"selected>PRAMUKA</option>
-                         <option value="PASKIBRA">PASKIBRA</option>
-                        <option value="PMR">PMR</option>
-                         <option value="DESIGN">DESIGN GRAFIK</option>
-                         <option value="TIK">TIK</option>
-                        <option value="ROBOTIK">ROBOTIK</option>
-                         <option value="KEAGAMAAN">KEAGAMAAN</option>
-                         <option value="TARI">TARI</option>
-                        <option value="TEATER">TEATER</option>
-                         <option value="BASKET">BASKET</option>
-                         <option value="FUTSAL">FUTSAL</option>
-                        <option value="BULUTANGKIS">BULU TANGKIS</option>
-                         <option value="VOLI">VOLI</option>
-                        <option value="TENISMEJA">TENIS MEJA</option>
-                        <option value="JURNALIS">JURNALIS</option>
-                         <option value="OLAHRAGA">OLAHRAGA</option>
 
-                        <option value="TAMYIZ">TAMYIZ</option>
-                         <option value="QORI">QORI</option>
-                        <option value="QIROATULKUTUB">QIROATUL KUTUB</option>
-                        <option value="HADROH">HADROH</option>
-                         <option value="KALIGRAFI">KALIGRAFI</option>
-                                                
-                       
-                    </select>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="ttl" class="form-label">Tempat Lahir <span class="text-danger">*</span></label>
+                        <input maxlength="60" type="text" class="form-control" name="ttl" placeholder="Kota Kelahiran" required />
                     </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="prestasi" class="form-label">PRESTASI YANG PERNAH DI RAIH</label>
-                    <input maxlength="125" type="text" class="form-control" name="prestasi" placeholder="" required />
-                     </div>
-                    <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="sekolahasal" class="form-label">SEKOLAH ASAL</label>
-                   <input maxlength="125" type="text" class="form-control" name="sekolahasal" placeholder="" required />
-                     </div>
-                <!-- input nisn -->
-                      <div class="form-group col-md-3">
-                    <label for="jenjang" class="form-label">MENDAFTAR PADA JENJANG </label>
-                    <select id="jenjang" name="jenjang" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        
-                        <option value="SMP"selected>SMP NU</option>
-                         <option value="SMA">SMA NU</option>
-                                                
-                       
-                    </select>
+                    <div class="col-md-6 form-group">
+                        <label for="ttg" class="form-label">Tanggal Lahir <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" name="ttg" required>
                     </div>
-        </div>
-        
-         <div class="form-row">
-                    <div class="form-group col-md-3">
-                    <label for="kesediaan" class="form-label">KESEDIAAN MESANTREN  </label>
-                    <select id="kesediaan" name="kesediaan" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        
-                        <option value="3"selected>3 TAHUN</option>
-                         <option value="6">6 TAHUN</option>
-                                                
-                       
-                    </select>
-                    </div>
-                <!-- input nisn -->
-                   <div class="form-group col-md-3">
-                    <label for="alasan" class="form-label">ALASAN MEMILIH PESANTREN </label>
-                    <select id="alasan" name="alasan" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        
-                        <option value="SENDIRI"selected>Keinginan Sendiri </option>
-                         <option value="ORTU">Keinginan Orang tua</option>
-                                                
-                       
-                    </select>
-                    </div>
-                    <!-- input nisn -->
-                       <div class="form-group col-md-3">
-                    <label for="kaisar" class="form-label">PERNAH IKUT LOMBA KAISAR? </label>
-                    <select id="kaisar" name="kaisar" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                         <option value="TIDAK"selected>TIDAK PERNAH </option>
-                         <option value="PERNAH">PERNAH TAPI TIDAK JUARA</option>
-                        <option value="SMPJUARA">SMP JADI JUARA </option>
-                         <option value="SMAJUARA">SMA JADI JUARA </option>
-                                                
-                       
-                    </select>
-                    </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="infodari" class="form-label">MEMPEROLEH INFORMASI DARI</label>
-                    <select id="infodari" name="infodari" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        <option value="Youtube">Youtube</option>
-                         <option value="Facebook">Facebook</option>
-                        <option value="Instagram">Instagram</option>
-                         <option value="Website">Website</option>
-                         <option value="Tiktok">Tiktok</option>
-                        <option value="Teman">Teman</option>
-                         <option value="Guru">Guru</option>
-                         <option value="Tetangga">Tetangga</option>
-                        <option value="Keluarga"selected>Keluarga</option>
-                    </select>
-                    </div>
-                    
-
-        </div>
-                <!-- input Asal Sekolah -->
-                <div class="mb-3">
-                    <label for="darimana" class="form-label">Tuliskan nama jika informasi dari "Teman, Guru, Tetangga atau Keluarga"</label>
-                    <input maxlength="100" type="text" class="form-control" name="darimana" placeholder="" required />
                 </div>
-      
-        
-            </div>      </div>        
-        </fieldset>
-        <p></p> 
-        
-        
-        
-<!-- ALAMAT/DOMISILI -------------------------------------------------------------------------------------------------------------------------------->
-          </fieldset>
-               <div class="card my-9 o-hidden border-0 shadow-lg">
-               <div class="card-header border-0 shadow-lg py-2">
-                    
-                <h5 class="m-0 font-weight-bold text-dark">
-                    <i  color="green" class="fas fa-address-book"></i>    ALAMAT | DOMISILI</h5>
+
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="jk" class="form-label">Jenis Kelamin <span class="text-danger">*</span></label>
+                        <select id="jk" name="jk" class="custom-select" required>
+                            <option value="" selected disabled>-- Pilih --</option>
+                            <option value="L">Laki-laki</option>
+                            <option value="P">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="anak" class="form-label">Anak Ke- <span class="text-danger">*</span></label>
+                        <input maxlength="2" type="number" class="form-control" name="anak" placeholder="Contoh: 1" required />
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="saudara" class="form-label">Jumlah Saudara <span class="text-danger">*</span></label>
+                        <input maxlength="2" type="number" class="form-control" name="saudara" placeholder="Contoh: 2" required />
+                    </div>
                 </div>
-                <div class="card-body">
-    
-                   <!-- input nama -->
-        <div class="form-row">
-                     <div class="form-group col-md-3">
-                    <label for="rt" class="form-label">RT</label>
-                    <input maxlength="4" type="number" class="form-control" name="rt" placeholder="" required />
-                    </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="rw" class="form-label">RW</label>
-                    <input maxlength="4" type="number" class="form-control" name="rw" placeholder="" required />
-                     </div>
-                    <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="dusun" class="form-label">BLOK/DUSUN</label>
-                    <input maxlength="50" type="text" class="form-control" name="dusun" placeholder="" required />
-                     </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="kel" class="form-label">DESA/KELURAHAN</label>
-                   <input maxlength="50" type="text" class="form-control" name="kel" placeholder="" required />
-                    </div>
-        </div>
-        
-         <div class="form-row">
-                     <div class="form-group col-md-3">
-                    <label for="kec" class="form-label">KECAMATAN</label>
-                    <input maxlength="50" type="text" class="form-control" name="kec" placeholder="" required />
-                    </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="kab" class="form-label">KABUPATEN</label>
-                    <input maxlength="50" type="text" class="form-control" name="kab" placeholder="" required />
-                     </div>
-                    <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="prov" class="form-label">PROPINSI</label>
-                    <input maxlength="50" type="text" class="form-control" name="prov" placeholder="" required />
-                     </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="kdpos" class="form-label">KODEPOS</label>
-                    <input maxlength="6" type="number" class="form-control" name="kdpos" placeholder="" required />
-                    </div>
-                    
 
-        </div>
-                <!-- input alamat -->
-                <div class="mb-3">
-                    <label for="alamat" class="form-label">ALAMAT LENGKAP</label>
-                    <input maxlength="200" type="text" class="form-control" name="alamat" placeholder="Masukan Alamat Lengkap" required />
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="nisn" class="form-label">NISN</label>
+                        <input maxlength="25" type="number" class="form-control" name="nisn" placeholder="Nomor Induk Siswa Nasional" required />
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="noijasah" class="form-label">No. Seri Ijazah SD/MI</label>
+                        <input maxlength="20" type="text" class="form-control" name="noijasah" placeholder="Jika ada" required />
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="noskhun" class="form-label">No. Seri SKHUN/KK</label>
+                        <input maxlength="25" type="number" class="form-control" name="noskhun" placeholder="Nomor KK" required />
+                    </div>
                 </div>
-      
-        
-            </div>      </div>        
-        </fieldset>
-        <p></p>
-     
-<!-- AYAH -------------------------------------------------------------------------------------------------------------------------------->
-         <fieldset>
-              <div class="card my-9 o-hidden border-0 shadow-lg">
-                <div class="card-header border-0 shadow-lg py-2">
-                <h5 class="m-0 font-weight-bold text-dark">
-                     <i  color="green" class="fas fa-user-edit"></i>  
-                    WALI | AYAH</h5>
-                </div>
-                <div class="card-body">
-    
-                   <!-- input nama -->
-        <div class="form-row">
-                     <div class="form-group col-md-3">
-                    <label for="ayah" class="form-label">NAMA LENGKAP </label>
-                    <input maxlength="40" type="text" class="form-control" name="ayah" placeholder="" required />
-                    </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="nikayah" class="form-label">NIK</label>
-                    <input maxlength="15" type="number" class="form-control" name="nikayah" placeholder="" required />
-                     </div>
-                    <!-- input nisn -->
-                    <div class="form-group col-md-3">
-                    <label for="ttlayah" class="form-label">TAHUN LAHIR</label>
-                    <input type="number" class="form-control" name="ttlayah" placeholder="" required />
-                     </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="penayah" class="form-label">PENDIDIKAN TERAKHIR </label>
-                    <select id="penayah" name="penayah" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        <option value="SD">SD</option>
-                        <option value="SLTP">SLTP/SMP</option>
-                        <option value="SLTA">SLTA/SMA</option>
-                        <option value="D3">D3</option>
-                         <option value="S1"selected>S1</option>
-                        <option value="S2">S2</option>
-                         <option value="S3">S3</option>
-                       
-                    </select>
-                    </div>
-                    
-        </div>
-        
-        
-        
-                     <!-- input nama -->
-        <div class="form-row">
-            <div class="form-group col-md-3">
-                      <label for="mondokayah" class="form-label">PERNAH MONDOK?</label>
-                    <select id="mondokayah" name="mondokayah" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        <option value="Y">YA</option>
-                        <option value="T"selected>TIDAK</option>
-                    </select>
-                    </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="alumayah" class="form-label">ALUMNI PONTREN ?</label>
-                    <input maxlength="100" type="text" class="form-control" name="alumayah" placeholder="" required />
-                     </div>
-                    <!-- input nisn -->
-                    <div class="form-group col-md-3">
-                    <label for="kerjaayah" class="form-label">PEKERJAAN  </label>
-                    <select id="kerjaayah" name="kerjaayah" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        <option value="PNS">PNS</option>
-                        <option value="GURU">GURU</option>
-                        <option value="POLRI">POLRI</option>
-                        <option value="TNI">TNI</option>
-                         <option value="DOKTER">DOKTER</option>
-                        <option value="PERAWAT">PERAWAT</option>
-                         <option value="PEDAGANG">PEDAGANG</option>
-                          <option value="KARYAWAN">KARYAWAN</option>
-                        <option value="PETANI">PETANI</option>
-                         <option value="WIRASWASTA"selected>WIRASWASTA</option>
-                         <option value="Pensiunan/ALM">Pensiunan atau Almarhum</option>
-                        
-                       
-                    </select>
-                    </div>
-                <!-- input nisn -->
-                      <div class="form-group col-md-3">
-                    <label for="hasilayah" class="form-label">PENGHASILAN PERBULAN  </label>
-                    <select id="hasilayah" name="hasilayah" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        <option value="<3.000.000">Kurang dari Rp. 3.000.000</option>
-                             <option value="<5.000.000"selected>Kurang dari Rp. 5.000.000 </option>
-                         <option value=">7.000.000">Lebih dari Rp. 7.000.000</option>
 
-
-                       
-                    </select>
+                 <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="bb" class="form-label">Berat / Tinggi Badan</label>
+                        <input maxlength="25" type="text" class="form-control" name="bb" placeholder="Contoh: 45 kg / 150 cm" required />
                     </div>
-        </div>
-        
-            </div>        
-        </fieldset>
-        
-        
-        <p></p>
-<!-- IBU -------------------------------------------------------------------------------------------------------------------------------->
-          </fieldset>
-               <div class="card my-9 o-hidden border-0 shadow-lg">
-               <div class="card-header border-0 shadow-lg py-2">
-                <h5 class="m-0 font-weight-bold text-dark">
-                    <i  color="green" class="fas fa-user-edit"></i>  
-                    WALI | IBU</h5>
-                </div>
-                <div class="card-body">
-    
-                   <!-- input nama -->
-        <div class="form-row">
-                     <div class="form-group col-md-3">
-                    <label for="ibu" class="form-label">NAMA LENGKAP</label>
-                    <input maxlength="50" type="text" class="form-control" name="ibu" placeholder="" required />
+                     <div class="col-md-6 form-group">
+                        <label for="sizeb" class="form-label">Ukuran Baju Seragam</label>
+                        <select id="sizeb" name="sizeb" class="custom-select" required>
+                            <option value="" selected disabled>-- Pilih --</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                        </select>
                     </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="nikibu" class="form-label">NIK</label>
-                    <input maxlength="15" type="number" class="form-control" name="nikibu" placeholder="" required />
-                     </div>
-                    <!-- input nisn -->
-                    <div class="form-group col-md-3">
-                    <label for="ttlibu" class="form-label">TAHUN LAHIR </label>
-                    <input type="number" class="form-control" name="ttlibu" placeholder="" required />
-                     </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="penibu" class="form-label">PENDIDIKAN TERAKHIR  </label>
-                    <select id="penibu" name="penibu" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        <option value="SD">SD</option>
-                        <option value="SLTP">SLTP/SMP</option>
-                        <option value="SLTA">SLTA/SMA</option>
-                        <option value="D3">D3</option>
-                         <option value="S1"selected>S1</option>
-                        <option value="S2">S2</option>
-                         <option value="S3">S3</option>
-                       
-                    </select>
-                    </div>
-                    
-        </div>
-        
-        
-        
-                     <!-- input nama -->
-        <div class="form-row">
-            <div class="form-group col-md-3">
-                      <label for="mondokibu" class="form-label">PERNAH MONDOK?</label>
-                    <select id="mondokibu" name="mondokibu" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        <option value="Y">YA</option>
-                        <option value="T"selected>TIDAK</option>
-                    </select>
-                    </div>
-                <!-- input nisn -->
-                     <div class="form-group col-md-3">
-                    <label for="alumibu" class="form-label">ALUMNI PONTREN?</label>
-                    <input maxlength="100" type="text" class="form-control" name="alumibu" placeholder="" required />
-                     </div>
-                    <!-- input nisn -->
-                    <div class="form-group col-md-3">
-                    <label for="kerjaibu" class="form-label">PEKERJAAN  </label>
-                    <select id="kerjaibu" name="kerjaibu" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                       <option value="PNS">PNS</option>
-                        <option value="GURU">GURU</option>
-                        <option value="POLRI">POLRI</option>
-                        <option value="TNI">TNI</option>
-                         <option value="DOKTER">DOKTER</option>
-                        <option value="PERAWAT">PERAWAT</option>
-                         <option value="PEDAGANG">PEDAGANG</option>
-                          <option value="KARYAWAN">KARYAWAN</option>
-                        <option value="PETANI">PETANI</option>
-                         <option value="WIRASWASTA">WIRASWASTA</option>
-                         <option value="IRT"selected>IBU RUMAH TANGGA </option>
-                         <option value="Pensiunan/ALM">Pensiunan atau Almarhum</option>
-                      
-                       
-                    </select>
-                    </div>
-                <!-- input nisn -->
-                      <div class="form-group col-md-3">
-                    <label for="hasilibu" class="form-label">PENGHASILAN PERBULAN  </label>
-                    <select id="hasilibu" name="hasilibu" class="custom-select" aria-label="Default select example">
-                        <option selected disabled>Pilih salah satu</option>
-                        <option value="<3.000.000">Kurang dari Rp. 3.000.000</option>
-                             <option value="<5.000.000"selected>Kurang dari Rp. 5.000.000 </option>
-                         <option value=">7.000.000">Lebih dari Rp. 7.000.000</option>
-
-
-                       
-                    </select>
-                    </div>
-        </div>
-</fieldset>
-
-</form>
-            </div>        
-        
-      <!-- tombol submit -->
-            <div class="text-center">
-            <button type="submit" name="simpan" class="btn btn-success font-weight-bold">SIMPAN</button>
+                 </div>
                  
-            <p><font size="1">Pastikan DATA FORMULIR PENDAFTARAN Terisi semua dan diisi dengan data yang sebenar-benarnya.      </font> </p> 
+                 <div class="form-group">
+                    <label for="penyakit" class="form-label">Riwayat Penyakit</label>
+                    <input maxlength="120" type="text" class="form-control" name="penyakit" placeholder="Tulis '-' jika tidak ada" required />
+                </div>
             </div>
-</div>
-               
-                
-           
-              
-                
 
-    
+            <!-- 2. ALAMAT -->
+            <div class="mb-5">
+                <h5 class="section-header">
+                    <i class="fas fa-map-marker-alt fa-lg"></i> ALAMAT DOMISILI
+                </h5>
+                
+                <div class="form-group">
+                    <label for="alamat" class="form-label">Alamat Lengkap (Jalan/Gang)</label>
+                    <textarea class="form-control" name="alamat" rows="2" placeholder="Nama Jalan, Nomor Rumah" required maxlength="200"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label for="rt" class="form-label">RT</label>
+                        <input maxlength="4" type="number" class="form-control" name="rt" required />
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="rw" class="form-label">RW</label>
+                        <input maxlength="4" type="number" class="form-control" name="rw" required />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="dusun" class="form-label">Dusun / Blok</label>
+                        <input maxlength="50" type="text" class="form-control" name="dusun" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="kel" class="form-label">Desa / Kelurahan</label>
+                        <input maxlength="50" type="text" class="form-control" name="kel" required />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="kec" class="form-label">Kecamatan</label>
+                        <input maxlength="50" type="text" class="form-control" name="kec" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 form-group">
+                        <label for="kab" class="form-label">Kabupaten / Kota</label>
+                        <input maxlength="50" type="text" class="form-control" name="kab" required />
+                    </div>
+                    <div class="col-md-5 form-group">
+                        <label for="prov" class="form-label">Provinsi</label>
+                        <input maxlength="50" type="text" class="form-control" name="prov" required />
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <label for="kdpos" class="form-label">Kode Pos</label>
+                        <input maxlength="6" type="number" class="form-control" name="kdpos" required />
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. MINAT DAN SEKOLAH -->
+            <div class="mb-5">
+                <h5 class="section-header">
+                    <i class="fas fa-school fa-lg"></i> DATA SEKOLAH & MINAT
+                </h5>
+                
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="sekolahasal" class="form-label">Asal Sekolah <span class="text-danger">*</span></label>
+                        <input maxlength="125" type="text" class="form-control" name="sekolahasal" placeholder="Nama Sekolah Sebelumnya" required />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="jenjang" class="form-label">Mendaftar Jenjang <span class="text-danger">*</span></label>
+                        <select id="jenjang" name="jenjang" class="custom-select" required>
+                            <option value="" selected disabled>-- Pilih --</option>
+                            <option value="SMP">SMP NU</option>
+                            <option value="SMA">SMA NU</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="mp" class="form-label">Status Masuk</label>
+                        <select id="mp" name="mp" class="custom-select" required>
+                            <option value="SB" selected>SANTRI BARU</option>
+                            <option value="SP">SANTRI PINDAHAN</option>
+                        </select>
+                    </div>
+                     <div class="col-md-6 form-group">
+                        <label for="kesediaan" class="form-label">Rencana Mondok</label>
+                        <select id="kesediaan" name="kesediaan" class="custom-select" required>
+                            <option value="3" selected>3 TAHUN</option>
+                            <option value="6">6 TAHUN</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="row">
+                     <div class="col-md-6 form-group">
+                        <label for="exkul" class="form-label">Minat Ekstrakurikuler</label>
+                        <select id="exkul" name="exkul" class="custom-select" required>
+                            <option value="" selected disabled>-- Pilih --</option>
+                            <option value="PRAMUKA">PRAMUKA</option>
+                            <option value="PASKIBRA">PASKIBRA</option>
+                            <option value="PMR">PMR</option>
+                            <option value="DESIGN">DESIGN GRAFIK</option>
+                            <option value="TIK">TIK</option>
+                            <option value="ROBOTIK">ROBOTIK</option>
+                            <option value="KEAGAMAAN">KEAGAMAAN</option>
+                            <option value="TARI">TARI</option>
+                            <option value="TEATER">TEATER</option>
+                            <option value="BASKET">BASKET</option>
+                            <option value="FUTSAL">FUTSAL</option>
+                            <option value="BULUTANGKIS">BULU TANGKIS</option>
+                            <option value="VOLI">VOLI</option>
+                            <option value="TENISMEJA">TENIS MEJA</option>
+                            <option value="JURNALIS">JURNALIS</option>
+                            <option value="OLAHRAGA">OLAHRAGA</option>
+                            <option value="TAMYIZ">TAMYIZ</option>
+                            <option value="QORI">QORI</option>
+                            <option value="QIROATULKUTUB">QIROATUL KUTUB</option>
+                            <option value="HADROH">HADROH</option>
+                            <option value="KALIGRAFI">KALIGRAFI</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group">
+                         <label for="prestasi" class="form-label">Prestasi Akademik/Non-Akademik</label>
+                        <input maxlength="125" type="text" class="form-control" name="prestasi" placeholder="Tulis '-' jika tidak ada" required />
+                    </div>
+                </div>
+
+                 <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="alasan" class="form-label">Motivasi Masuk Pesantren</label>
+                        <select id="alasan" name="alasan" class="custom-select" required>
+                            <option value="SENDIRI" selected>Keinginan Sendiri</option>
+                            <option value="ORTU">Dorongan Orang Tua</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="kaisar" class="form-label">Pengalaman Lomba KAISAR?</label>
+                        <select id="kaisar" name="kaisar" class="custom-select" required>
+                            <option value="TIDAK" selected>TIDAK PERNAH</option>
+                            <option value="PERNAH">PERNAH (TIDAK JUARA)</option>
+                            <option value="SMPJUARA">PERNAH (JUARA)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="infodari" class="form-label">Sumber Informasi</label>
+                        <select id="infodari" name="infodari" class="custom-select" required>
+                            <option value="Keluarga" selected>Keluarga</option>
+                            <option value="Teman">Teman</option>
+                            <option value="Guru">Guru</option>
+                            <option value="Tetangga">Tetangga</option>
+                            <option value="Website">Website</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Tiktok">Tiktok</option>
+                            <option value="Youtube">Youtube</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="darimana" class="form-label">Detail Sumber Informasi</label>
+                        <input maxlength="100" type="text" class="form-control" name="darimana" placeholder="Nama Teman/Keluarga atau Akun Medsos" required />
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 4. DATA AYAH -->
+            <div class="mb-5">
+                <h5 class="section-header">
+                    <i class="fas fa-male fa-lg"></i> DATA AYAH KANDUNG
+                </h5>
+                
+                <div class="row">
+                    <div class="col-md-8 form-group">
+                        <label for="ayah" class="form-label">Nama Lengkap Ayah</label>
+                        <input maxlength="40" type="text" class="form-control" name="ayah" required />
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="ttlayah" class="form-label">Tahun Lahir</label>
+                        <input type="number" class="form-control" name="ttlayah" placeholder="Contoh: 1975" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="nikayah" class="form-label">NIK Ayah</label>
+                        <input maxlength="16" type="number" class="form-control" name="nikayah" required />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="penayah" class="form-label">Pendidikan Terakhir</label>
+                        <select id="penayah" name="penayah" class="custom-select" required>
+                            <option value="" selected disabled>-- Pilih --</option>
+                            <option value="SD">SD/Sederajat</option>
+                            <option value="SLTP">SMP/Sederajat</option>
+                            <option value="SLTA">SMA/Sederajat</option>
+                            <option value="D3">Diploma (D3)</option>
+                            <option value="S1">Sarjana (S1)</option>
+                            <option value="S2">Magister (S2)</option>
+                            <option value="S3">Doktor (S3)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                     <div class="col-md-6 form-group">
+                        <label for="kerjaayah" class="form-label">Pekerjaan Utama</label>
+                        <select id="kerjaayah" name="kerjaayah" class="custom-select" required>
+                            <option value="" selected disabled>-- Pilih --</option>
+                            <option value="WIRASWASTA">Wiraswasta</option>
+                            <option value="PETANI">Petani/Nelayan</option>
+                            <option value="KARYAWAN">Karyawan Swasta</option>
+                            <option value="PNS">PNS/ASN</option>
+                            <option value="TNI">TNI/Polri</option>
+                            <option value="GURU">Guru/Dosen</option>
+                            <option value="PEDAGANG">Pedagang</option>
+                            <option value="Pensiunan/ALM">Pensiunan / Almarhum</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="hasilayah" class="form-label">Penghasilan Rata-rata</label>
+                        <select id="hasilayah" name="hasilayah" class="custom-select" required>
+                             <option value="<3.000.000">Kurang dari Rp. 3.000.000</option>
+                             <option value="<5.000.000">Rp. 3.000.000 - Rp. 5.000.000</option>
+                             <option value=">7.000.000">Lebih dari Rp. 5.000.000</option>
+                        </select>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="mondokayah" class="form-label">Pernah Mondok?</label>
+                        <select id="mondokayah" name="mondokayah" class="custom-select" required>
+                            <option value="T" selected>Tidak</option>
+                            <option value="Y">Ya</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group">
+                         <label for="alumayah" class="form-label">Nama Pesantren (Jika Pernah)</label>
+                         <input maxlength="100" type="text" class="form-control" name="alumayah" placeholder="-" required />
+                    </div>
+                 </div>
+            </div>
+
+            <!-- 5. DATA IBU -->
+            <div class="mb-5">
+                <h5 class="section-header">
+                    <i class="fas fa-female fa-lg"></i> DATA IBU KANDUNG
+                </h5>
+                
+                <div class="row">
+                    <div class="col-md-8 form-group">
+                        <label for="ibu" class="form-label">Nama Lengkap Ibu</label>
+                        <input maxlength="50" type="text" class="form-control" name="ibu" required />
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="ttlibu" class="form-label">Tahun Lahir</label>
+                        <input type="number" class="form-control" name="ttlibu" placeholder="Contoh: 1980" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="nikibu" class="form-label">NIK Ibu</label>
+                        <input maxlength="16" type="number" class="form-control" name="nikibu" required />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="penibu" class="form-label">Pendidikan Terakhir</label>
+                        <select id="penibu" name="penibu" class="custom-select" required>
+                            <option value="" selected disabled>-- Pilih --</option>
+                            <option value="SD">SD/Sederajat</option>
+                            <option value="SLTP">SMP/Sederajat</option>
+                            <option value="SLTA">SMA/Sederajat</option>
+                            <option value="D3">Diploma (D3)</option>
+                            <option value="S1">Sarjana (S1)</option>
+                            <option value="S2">Magister (S2)</option>
+                            <option value="S3">Doktor (S3)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                     <div class="col-md-6 form-group">
+                        <label for="kerjaibu" class="form-label">Pekerjaan Utama</label>
+                        <select id="kerjaibu" name="kerjaibu" class="custom-select" required>
+                            <option value="" selected disabled>-- Pilih --</option>
+                            <option value="IRT" selected>Ibu Rumah Tangga</option>
+                            <option value="WIRASWASTA">Wiraswasta</option>
+                            <option value="PETANI">Petani/Nelayan</option>
+                            <option value="KARYAWAN">Karyawan Swasta</option>
+                            <option value="PNS">PNS/ASN</option>
+                            <option value="TNI">TNI/Polri</option>
+                            <option value="GURU">Guru/Dosen</option>
+                            <option value="PEDAGANG">Pedagang</option>
+                            <option value="Pensiunan/ALM">Pensiunan / Almarhumah</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="hasilibu" class="form-label">Penghasilan Rata-rata</label>
+                        <select id="hasilibu" name="hasilibu" class="custom-select" required>
+                             <option value="<3.000.000" selected>Kurang dari Rp. 3.000.000 (atau Tidak Ada)</option>
+                             <option value="<5.000.000">Rp. 3.000.000 - Rp. 5.000.000</option>
+                             <option value=">7.000.000">Lebih dari Rp. 5.000.000</option>
+                        </select>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="mondokibu" class="form-label">Pernah Mondok?</label>
+                        <select id="mondokibu" name="mondokibu" class="custom-select" required>
+                            <option value="T" selected>Tidak</option>
+                            <option value="Y">Ya</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group">
+                         <label for="alumibu" class="form-label">Nama Pesantren (Jika Pernah)</label>
+                         <input maxlength="100" type="text" class="form-control" name="alumibu" placeholder="-" required />
+                    </div>
+                 </div>
+            </div>
+
+            <!-- 6. KONTAK WALI -->
+            <div class="mb-4">
+                 <h5 class="section-header">
+                    <i class="fas fa-address-book fa-lg"></i> KONTAK WALI / ORANG TUA
+                </h5>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="nohp" class="form-label">Nomor HP (Aktif)</label>
+                        <input maxlength="15" type="number" class="form-control" name="nohp" placeholder="08xxxxxxxxxx" required />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="nowa" class="form-label">Nomor WhatsApp (Aktif)</label>
+                        <input maxlength="15" type="number" class="form-control" name="nowa" placeholder="08xxxxxxxxxx" required />
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="ig" class="form-label">Akun Instagram (Opsional)</label>
+                        <input maxlength="100" type="text" class="form-control" name="ig" placeholder="@username" required />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="fb" class="form-label">Akun Facebook (Opsional)</label>
+                        <input maxlength="100" type="text" class="form-control" name="fb" placeholder="Nama Akun" required />
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUBMIT -->
+            <div class="text-center pt-4 border-top">
+                <button type="submit" name="simpan" class="btn btn-success btn-lg px-5 font-weight-bold shadow">
+                    <i class="fas fa-save mr-2"></i> SIMPAN DATA PENDAFTARAN
+                </button>
+                <p class="mt-3 text-danger small font-weight-bold">
+                    * Pastikan semua data yang diisi sudah benar sebelum menyimpan.
+                </p>
+            </div>
+
+        </div>
+    </form>
+</div>
 
 <?php
 
 // import footer
 include 'footer.php';
 
-} //else {
- //   echo "<script>
- //           alert('Silahkan Login Terlebih Dahulu!');
- //           window.location = 'login.php';
- //       </script>";
-//}
-
-else {
+} else {
         echo "<script>
         alert('ANDA SUDAH TERDAFTAR.. ANDA AKAN DI ALIHKAN KE MENU STATUS');
  window.location = 'status.php';
