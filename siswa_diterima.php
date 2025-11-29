@@ -11,84 +11,85 @@ if(isset($_SESSION['sesi'])){
 ?>
 
 <!-- container -->
-<div class="container">    
-    
-        <div class="card my-2 o-hidden border-0 shadow-lg">
-        <h5 class="card-header text-center"><i class="fas fa-user-check"></i> PESERTA DI TERIMA</h5>
-        <div class="card-body container o-hidden border-0 shadow-lg">
+<div class="container py-4">    
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h4 class="text-dark font-weight-bold mb-0"><i class="fas fa-user-check mr-2"></i> PESERTA DITERIMA</h4>
+        <a href="dashboard.php" class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left mr-1"></i> Kembali</a>
+    </div>
 
-            <!-- Tabel Siswa Diterima <th>ASAL SEKOLAH</th>--> 
-            <table class="table table-bordered wrap" id="dataTable">
-                <thead class="thead-light">
-                    <tr>
-                        <th>NO</th>
-                         <th>NO DAFTAR</th>
-                        <th>NIK</th>
-                        <th>NAMA</th>
-                        <th>STATUS</th>
-                        <th>BAYAR</th>
-                        <th>BIAYA </th>
+    <div class="card border-0 shadow-lg">
+        <div class="card-header bg-white py-3">
+            <h6 class="m-0 font-weight-bold text-success">Data Santri Lulus Seleksi</h6>
+        </div>
+        <div class="card-body">
+
+            <!-- Tabel Siswa Diterima --> 
+            <div class="table-responsive">
+                <table class="table table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="thead-success">
+                        <tr>
+                            <th>NO</th>
+                            <th>NO DAFTAR</th>
+                            <th>NIK</th>
+                            <th>NAMA</th>
+                            <th>STATUS</th>
+                            <th>BAYAR</th>
+                            <th>BIAYA</th>
+                            <th>AKSI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         
-                        <th>DETAIL</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                <?php  
+                    <?php  
 
-                    // mengambil data tabel pendaftaran dengan kondisi status Diterima
-                    $query = mysqli_query($db, "SELECT * FROM pendaftaran WHERE status='Diterima'");
-                    $data = mysqli_fetch_array($query);
-
-                    // cek kolom dari pendaftaran
-                    if(mysqli_num_rows($query) >0) {
-                        $no = 1;
+                        // mengambil data tabel pendaftaran dengan kondisi status Diterima
+                        $query = mysqli_query($db, "SELECT * FROM pendaftaran WHERE status='Diterima'");
                         
-                        // loop data tabel pendaftaran kondisi diterima<td><?=$data['sekolah_asal'];
-                        
-                        do{
-                             $angka2 =number_format($data['id']);
-                            $jumlah = $angka1 + $angka2;
-                            $tst=$data['bayardaftar'];
-                           
-                         
-
-                ?>
-                    <tr>
-                        <td><?=$no++;?></td>
-                        <td><?=$data['id'];?></td>
-                        <td><?=$data['nik'];?></td>
-                        <td><?=$data['nama'];?></td>
-                        <td><?=$data['status'];?></td>
-                        
-<?php
-if ($tst == "BELUM") {
-    $color = "red";} else {$color = "black";}
-?>
-
-<td><p style="color: <?php echo $color; ?>;"><?php echo $tst; ?></p></td>
-    
-    
-    
-
-                       
-                        <td><?php echo number_format($jumlah, 0, ',', '.');?></td>
-                        
-                        <td>
-                          <a role="button" name="submit" href="detail.php?id=<?=$data['id'];?>" class="btn mx-2 btn-success">Detail</a>   
+                        // cek kolom dari pendaftaran
+                        if(mysqli_num_rows($query) >0) {
+                            $no = 1;
                             
-                        </td>
-                    </tr>
-                <?php 
-                        }while($data = mysqli_fetch_assoc($query));
-                    }else{
-
-                        // jika false
-                        echo "<tr><td colspan='7'><center>Belum ada data!</center></td></tr>";
-                    }
-                ?>
-                </tbody>
-            </table>
+                            // loop data tabel pendaftaran kondisi diterima
+                            while($data = mysqli_fetch_assoc($query)){
+                                $angka2 =number_format($data['id']);
+                                $jumlah = $angka1 + $angka2;
+                                $tst=$data['bayardaftar'];
+                    ?>
+                        <tr>
+                            <td><?=$no++;?></td>
+                            <td><?=$data['id'];?></td>
+                            <td><?=$data['nik'];?></td>
+                            <td class="font-weight-bold text-dark"><?=$data['nama'];?></td>
+                            <td>
+                                <span class="badge badge-success px-2">DITERIMA</span>
+                            </td>
+                            
+                            <td>
+                                <?php if($tst == "BELUM"): ?>
+                                    <span class="badge badge-danger px-2">BELUM</span>
+                                <?php else: ?>
+                                    <span class="badge badge-success px-2">LUNAS</span>
+                                <?php endif; ?>
+                            </td>
+                           
+                            <td>Rp. <?php echo number_format($jumlah, 0, ',', '.');?></td>
+                            
+                            <td>
+                              <a href="detail.php?id=<?=$data['id'];?>" class="btn btn-sm btn-success shadow-sm font-weight-bold">
+                                  <i class="fas fa-info-circle mr-1"></i> Detail
+                              </a>   
+                            </td>
+                        </tr>
+                    <?php 
+                            }
+                        }else{
+                            // jika false
+                            // echo "<tr><td colspan='8'><center>Belum ada data!</center></td></tr>";
+                        }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
