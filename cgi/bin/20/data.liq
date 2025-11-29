@@ -1,0 +1,9 @@
+http://103.157.27.170:888/background/
+*http://103.157.27.170:888/image/
+*http://103.157.27.170:888/santri/
+*http://103.157.27.170:888/phpmyadmin_dm/dm/1/
+*http://103.157.27.170:888/phpmyadmin_dm/dm/tripaybdm/
+*http://103.157.27.170:888/phpmyadmin_dm/dm/
+*http://103.157.27.170:888/phpmyadmin_dm/dm/sma/
+*http://103.157.27.170:888/phpmyadmin_dm/dm/smp/
+*http://103.157.27.170:888/phpmyadmin_dm/dm/sd/
