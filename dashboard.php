@@ -10,7 +10,7 @@ if(isset($_SESSION['sesi'])) {
     include_once 'header.php';
 
 
-    $query_seleksi = mysqli_query($db, "SELECT id FROM pendaftaran WHERE status='Masih Seleksi'");
+    $query_seleksi = mysqli_query($db, "SELECT id FROM pendaftaran WHERE status='Masih Seleksi' OR status='' OR status IS NULL OR status='0' OR status='-'");
     $num_seleksi = mysqli_num_rows($query_seleksi);
 
     $query_diterima = mysqli_query($db, "SELECT id FROM pendaftaran WHERE status='Diterima'");

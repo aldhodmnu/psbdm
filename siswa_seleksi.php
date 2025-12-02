@@ -49,8 +49,8 @@ if(isset($_SESSION['sesi'])){
                         
                     <?php  
 
-                        // mengambil data tabel pendaftaran dengan kondisi status Masih Seleksi
-                        $query = mysqli_query($db, "SELECT * FROM pendaftaran WHERE status='Masih Seleksi'");
+                        // mengambil data tabel pendaftaran dengan kondisi status Masih Seleksi atau kosong
+                        $query = mysqli_query($db, "SELECT * FROM pendaftaran WHERE status='Masih Seleksi' OR status='' OR status IS NULL OR status='0' OR status='-'");
                         
                         // cek kolom dari pendaftaran
                         if(mysqli_num_rows($query) >0) {

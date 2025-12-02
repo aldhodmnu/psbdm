@@ -126,6 +126,11 @@ if(isset($_SESSION['sesi'])){
                             <div class="status-value">
                                 <?php 
                                     $status = $data['status'];
+                                    // Jika status kosong, null, 0, atau -, set default "Masih Seleksi"
+                                    if(empty($status) || $status == '0' || $status == '-') {
+                                        $status = 'Masih Seleksi';
+                                    }
+                                    
                                     $badgeClass = 'status-warning';
                                     if(strpos(strtolower($status), 'lulus') !== false || strpos(strtolower($status), 'diterima') !== false) {
                                         $badgeClass = 'status-success';
