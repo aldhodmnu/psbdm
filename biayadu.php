@@ -10,6 +10,15 @@ include 'koneksi.php';
 if(isset($_SESSION['sesi'])){
     $header = "- Biaya Daftar Ulang";
     include_once 'header.php';
+    
+    // Ambil nama file gambar dari database
+    $query_gambar = mysqli_query($db, "SELECT * FROM pengaturan WHERE nama='gambar_daftar_ulang' LIMIT 1");
+    if(mysqli_num_rows($query_gambar) > 0) {
+        $data_gambar = mysqli_fetch_array($query_gambar);
+        $nama_gambar = $data_gambar['nilai'];
+    } else {
+        $nama_gambar = 'Registrasi-PSB.png'; // default
+    }
 ?>
 
 <!-- container -->
@@ -23,7 +32,7 @@ if(isset($_SESSION['sesi'])){
             </h5>
         </div>
         <div class="card-body text-center p-4">
-            <img src="Registrasi-PSB.png" alt="Rincian Biaya Daftar Ulang" style="width:100%; max-width:900px; height:auto;" class="mb-3">
+            <img src="<?php echo $nama_gambar; ?>" alt="Rincian Biaya Daftar Ulang" style="width:100%; max-width:900px; height:auto;" class="mb-3">
             
             <div class="alert alert-info mt-3">
                 <i class="fas fa-info-circle mr-2"></i>
@@ -31,7 +40,7 @@ if(isset($_SESSION['sesi'])){
             </div>
             
             <div class="mt-3">
-                <a href="Registrasi-PSB.png" target="_blank" class="btn btn-success mr-2">
+                <a href="<?php echo $nama_gambar; ?>" target="_blank" class="btn btn-success mr-2">
                     <i class="fas fa-download mr-2"></i> Download Gambar
                 </a>
                 <a href="https://wa.me/6282219699610" target="_blank" class="btn btn-primary">
