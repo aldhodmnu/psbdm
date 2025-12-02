@@ -12,8 +12,12 @@ if(isset($_SESSION['sesi'])) {
     
 // Ambil total biaya dari database
 $query_total = mysqli_query($db, "SELECT SUM(nominal) as total FROM rincian_biaya");
-$data_total = mysqli_fetch_array($query_total);
-$angka1 = $data_total['total'] ? $data_total['total'] : 995000;
+if($query_total) {
+    $data_total = mysqli_fetch_array($query_total);
+    $angka1 = ($data_total && $data_total['total']) ? $data_total['total'] : 995000;
+} else {
+    $angka1 = 995000; // default jika tabel belum ada
+}
 
 // Hitung jumlah digit ID user
 $id_user = $_SESSION['sesi'];
