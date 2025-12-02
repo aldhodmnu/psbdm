@@ -1,0 +1,9 @@
+http://103.84.206.51:888/background/
+*http://103.84.206.51:888/image/
+*http://103.84.206.51:888/santri/
+*http://103.84.206.51:888/phpmyadmin_97c72ceb883f33ff/dm/1/
+*http://103.84.206.51:888/phpmyadmin_97c72ceb883f33ff/dm/tripaybdm/
+*http://103.84.206.51:888/phpmyadmin_97c72ceb883f33ff/dm/
+*http://103.84.206.51:888/phpmyadmin_97c72ceb883f33ff/dm/sma/
+*http://103.84.206.51:888/phpmyadmin_97c72ceb883f33ff/dm/smp/
+*http://103.84.206.51:888/phpmyadmin_97c72ceb883f33ff/dm/sd/

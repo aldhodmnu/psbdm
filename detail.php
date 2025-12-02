@@ -1,0 +1,181 @@
+<?php
+
+// sesi
+session_start();
+
+// import koneksi.php
+include 'koneksi.php';
+
+// fungsi pengecekan sesi
+if(isset($_SESSION['sesi'])){
+
+    // import header.php
+    include 'header.php';
+
+    // mengambil data id
+    $id = $_GET['id'];
+
+    // ambil data tabel pendaftaran
+    $query = mysqli_query($db, "SELECT * FROM pendaftaran WHERE id='$id'");
+    $data = mysqli_fetch_array($query);
+ $tst=$data['bayardaftar'];
+    // fungsi konversi tanggal 
+    function tanggal_indo($tanggal){
+    	$bulan = [  'bulan',
+                    'Januari',
+                    'Februari',
+                    'Maret',
+                    'April',
+                    'Mei',
+                    'Juni',
+                    'Juli',
+                    'Agustus',
+                    'September',
+                    'Oktober',
+                    'November',
+                    'Desember'
+                ];
+
+        // memecah tanggal bulan tahun
+        $split = explode('-', $tanggal);
+        return $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
+    }
+?>
+
+<!-- Container -->
+<div class="container py-3">
+  
+<div class="card my-2 o-hidden border-0 shadow-lg">
+        <!-- Card Header -->
+	
+        <h5 class="card-header text-center"><i class="fas fa-book-reader"></i> DATA PESERTA</h5>
+        
+
+        <!-- Card Body -->
+        <div class="card-body o-hidden border-0 shadow-lg ">
+
+            <!-- Card Data Siswa -->
+            <div class="card">
+                <div class="card-body">
+					<h2 class="text-secondary text-center"><img src="dmlogo.png" alt="" style="width:80;height:80px;"> </h2>
+					<hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Nama Lengkap</h6>
+                        </div>
+                    <div class="col-sm-9 text-secondary">
+                        <?php echo $data['nama']; ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">NIK</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <?php echo $data['nik']; ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Jenis Kelamin</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <?php echo $data['jenis_kelamin']; ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                <div class="col-sm-3">
+                        <h6 class="mb-0">Tempat / Tanggal Lahir</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <?php echo  $data['tempat_lahir'] .  ", " . tanggal_indo($data['tanggal_lahir']); ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Asal Sekolah</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <?php echo $data['sekolah_asal']; ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Alamat</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <?php echo $data['alamat']; ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Status Pendaftaran</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <?php echo $data['status']; ?>
+                    </div>
+                </div>
+					<div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Gelombang Pendaftaran</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <?php echo $data['gelombang']; ?>
+                    </div>
+                </div>
+                <hr>
+                
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Bayar Pendaftaran</h6>
+                    </div>
+				<?php
+if ($tst == "BELUM") {
+    $color = "red";} else {$color = "black";}
+?>	
+					
+					
+					
+                    <div class="col-sm-9 text-secondary">
+						
+						<p style="color: <?php echo $color; ?>;"><?php echo $tst; ?></p>
+						
+                        
+                    </div>
+                </div>
+                <hr>
+                
+                <div class="row  justify-content-center">
+                    <a target="_blank" onclick="window.print()" class="btn btn-primary">Cetak</a>      
+                    <a role="button" name="submit" href="proses/proses_diterima.php?id=<?=$data['id'];?>" class="btn mx-2 btn-success">Diterima</a>
+                    
+                    <a role="button" name="submit" href="proses/proses_ditolak.php?id=<?=$data['id'];?>" class="btn mx-2 btn-danger">Ditolak</a>
+                    <a role="button" name="submit" href="proses/update_bayar.php?id=<?=$data['id'];?>" class="btn mx-2 btn-success">ACC BAYAR</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                    
+
+
+<?php
+
+    include 'footer.php';
+
+} else {
+    echo "<script>
+            alert('Silahkan Login Terlebih Dahulu!');
+            window.location = 'login.php';
+        </script>";
+}
+
+?>
