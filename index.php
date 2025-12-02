@@ -7,9 +7,19 @@ include 'koneksidm.php';
 date_default_timezone_set("Asia/Bangkok");
 $currentDate = date('Y-m-d');
 $currentDate2= date('d-M-Y H:i:s');
-$angka1 = 995000;
+// Ambil total biaya dari database
+$query_total = mysqli_query($db, "SELECT SUM(nominal) as total FROM rincian_biaya");
+$data_total = mysqli_fetch_array($query_total);
+$angka1 = $data_total['total'] ? $data_total['total'] : 995000;
 
-//$jumlah = $angka1 + $angka2;
+// Hitung jumlah digit ID user
+$id_user = $_SESSION['sesi'];
+$jumlah_digit = strlen($id_user);
+
+// Ganti digit terakhir sesuai jumlah digit ID
+$angka1_str = (string)$angka1;
+$angka1_tanpa_digit = substr($angka1_str, 0, -$jumlah_digit);
+$jumlah = (int)($angka1_tanpa_digit . $id_user);
 if(isset($_SESSION['sesi'])) {
 $angka2 =number_format($_SESSION['sesi']);
     $header = "";
@@ -130,32 +140,28 @@ $pesan_wa_url = rawurlencode($pesan_wa_template);
                         <div id="rincianBiaya" class="collapse show">
                             <table class="table table-sm table-borderless table-striped mb-0 small">
                                 <tbody>
+                                    <?php
+                                    // Ambil rincian biaya dari database
+                                    $query_rincian = mysqli_query($db, "SELECT * FROM rincian_biaya ORDER BY id");
+                                    $subtotal = 0;
+                                    while($item = mysqli_fetch_array($query_rincian)) {
+                                        $subtotal += $item['nominal'];
+                                    ?>
                                     <tr>
-                                        <td class="pl-4">Pendaftaran Tes</td>
-                                        <td class="text-right pr-4 text-dark font-weight-bold">Rp 470.000</td>
+                                        <td class="pl-4"><?php echo $item['nama']; ?></td>
+                                        <td class="text-right pr-4 text-dark font-weight-bold">Rp <?php echo number_format($item['nominal'], 0, ',', '.'); ?></td>
                                     </tr>
-                                    <tr>
-                                        <td class="pl-4">Medical Check Up</td>
-                                        <td class="text-right pr-4 text-dark font-weight-bold">Rp 400.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pl-4">Psikotes & Interview</td>
-                                        <td class="text-right pr-4 text-dark font-weight-bold">Rp 120.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pl-4">Admin Bank</td>
-                                        <td class="text-right pr-4 text-dark font-weight-bold">Rp 5.000</td>
-                                    </tr>
+                                    <?php } ?>
                                     <tr class="border-top border-secondary">
                                         <td class="pl-4 font-weight-bold text-secondary">SUBTOTAL BIAYA</td>
-                                        <td class="text-right pr-4 font-weight-bold text-secondary">Rp 995.000</td>
+                                        <td class="text-right pr-4 font-weight-bold text-secondary">Rp <?php echo number_format($subtotal, 0, ',', '.'); ?></td>
                                     </tr>
                                     <tr class="bg-warning-soft text-dark">
                                         <td class="pl-4 d-flex align-items-center font-weight-bold">
                                             <span class="badge badge-warning mr-2 text-dark">KODE UNIK</span>
-                                            (Sesuai ID Pendaftaran)
+                                            (ID: <?php echo $_SESSION['sesi']; ?>)
                                         </td>
-                                        <td class="text-right pr-4 font-weight-bold text-danger">+ Rp <?php echo number_format($_SESSION['sesi'], 0, ',', '.'); ?></td>
+                                        <td class="text-right pr-4 font-weight-bold text-danger">Ganti <?php echo strlen($_SESSION['sesi']); ?> digit terakhir</td>
                                     </tr>
                                     <tr class="bg-primary-custom text-white" style="font-size: 1.1em;">
                                         <td class="pl-4 py-3 font-weight-bold">TOTAL YANG HARUS DITRANSFER</td>
@@ -164,7 +170,7 @@ $pesan_wa_url = rawurlencode($pesan_wa_template);
                                 </tbody>
                             </table>
                             <div class="p-3 bg-white border-top small text-muted">
-                                <i class="fas fa-info-circle mr-1 text-info"></i> <strong>Kode Unik</strong> berfungsi untuk membedakan transfer Anda dengan santri lain secara otomatis. Uang kode unik akan masuk sebagai donasi/infaq pesantren.
+                                <i class="fas fa-info-circle mr-1 text-info"></i> <strong>Kode Unik:</strong> Sistem mengganti <?php echo strlen($_SESSION['sesi']); ?> digit terakhir dari subtotal dengan ID Anda (<?php echo $_SESSION['sesi']; ?>). Contoh: <?php echo number_format($subtotal, 0, ',', '.'); ?> → <?php echo number_format($jumlah, 0, ',', '.'); ?>
                             </div>
                         </div>
                     </div>
