@@ -53,11 +53,11 @@
         }
         .login-header {
             background-color: white;
-            padding: 2rem 2rem 0;
+            padding: 1rem 1rem 0;
             text-align: center;
         }
         .login-body {
-            padding: 2rem;
+            padding: 1rem;
             background-color: white;
         }
         .logo-img {
@@ -79,7 +79,7 @@
                 padding: 1.5rem 1.5rem 0;
             }
             .login-body {
-                padding: 1.5rem;
+                padding: 1rem;
             }
         }
     </style>
@@ -89,6 +89,7 @@
 <body>
 
     <div class="container">
+		
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-5">
                 

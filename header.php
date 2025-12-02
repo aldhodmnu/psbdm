@@ -74,9 +74,7 @@
                     <li class="nav-item">
                      <a class="nav-link text-white" href="dashboard.php"><i class="fas fa-desktop mr-1"></i> Dashboard</a>
                     </li>
-                    <li class="nav-item">
-                     <a class="nav-link text-white" href="biayadu.php"><i class="far fa-calendar-check mr-1"></i> Biaya DU</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link text-white" href="pengguna.php"><i class="fas fa-user-friends mr-1"></i> Akun</a>
                     </li>
@@ -98,7 +96,7 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-users mr-1"></i> Data Peserta
+                        <i class="fas fa-users mr-1"></i> Peserta
                         </a>
                         <div class="dropdown-menu shadow-sm border-0" aria-labelledby="navbarDropdown2">
                             <a class="dropdown-item" href="siswa_seleksi.php"><i class="fas fa-user-cog mr-2 text-muted"></i> Seleksi</a>
@@ -107,9 +105,15 @@
                             <a class="dropdown-item text-danger" href="siswa_ditolak.php"><i class="fas fa-user-times mr-2"></i> Tidak Diterima</a>
                         </div>
                     </li>
+					
+					<li class="nav-item">
+                        <a class="nav-link text-white" href="biaya.php"><i class="far fa-calendar-check mr-1"></i> Biaya DU</a>
+                    </li>
+					
                     <li class="nav-item ml-md-3">
                         <a class="nav-link btn btn-outline-light px-3 btn-sm mt-1 mt-md-0" href="logout.php"><i class="fas fa-sign-out-alt mr-1"></i> Logout</a>
                     </li>
+					
                     ';
 
                 } 

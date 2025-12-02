@@ -10,14 +10,14 @@ if(isset($_SESSION['sesi'])) {
     include_once 'header.php';
 
 
-    $query_seleksi = mysqli_query($db, "SELECT id FROM pendaftaran WHERE status='Masih Seleksi'");
+    $query_seleksi = mysqli_query($db, "SELECT id FROM pendaftaran WHERE status='Masih Seleksi' OR status='' OR status IS NULL OR status='0' OR status='-'");
     $num_seleksi = mysqli_num_rows($query_seleksi);
 
     $query_diterima = mysqli_query($db, "SELECT id FROM pendaftaran WHERE status='Diterima'");
     $num_diterima = mysqli_num_rows($query_diterima);
 
-    $query_cadangan = mysqli_query($db, "SELECT id FROM pendaftaran WHERE status='Cadangan'");
-    $num_cadangan = mysqli_num_rows($query_cadangan);
+    //$query_cadangan = mysqli_query($db, "SELECT id FROM pendaftaran WHERE status='Cadangan'");
+    //$num_cadangan = mysqli_num_rows($query_cadangan);
 
     $query_ditolak = mysqli_query($db, "SELECT id FROM pendaftaran WHERE status='Tidak Diterima'");
     $num_ditolak = mysqli_num_rows($query_ditolak);
@@ -97,28 +97,7 @@ if(isset($_SESSION['sesi'])) {
             </div>
         </div>
         
-        <!-- Card Cadangan (Optional, based on variable) -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-0 shadow-sm h-100">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                Santri Cadangan</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $num_cadangan ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-user-tag fa-2x text-gray-300" style="color: #858796;"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer bg-white border-top-0 d-flex align-items-center justify-content-between">
-                    <a class="small text-secondary font-weight-bold stretched-link" href="#">Lihat Detail</a>
-                    <div class="small text-secondary"><i class="fas fa-angle-right"></i></div>
-                </div>
-            </div>
-        </div>
-    </div>
+       
     
     <!-- Quick Actions / Info -->
     <div class="row">
@@ -140,7 +119,7 @@ if(isset($_SESSION['sesi'])) {
 
 <?php
 
-include_once 'footer.php';
+include_once 'foot.php';
 
 } else {
     echo "<script>

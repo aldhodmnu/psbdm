@@ -2,7 +2,8 @@
 
 // import file koneksi
 include '../koneksi.php';
-
+date_default_timezone_set("Asia/Bangkok");
+$currentDate = date('Y-m-d');
 // fungsi ketika tombol register ditekan
 if(isset($_POST['submit'])){
     extract($_POST);
@@ -33,9 +34,9 @@ if(isset($_POST['submit'])){
     $cekusername = mysqli_query($db, "SELECT * FROM user WHERE name = '$nama' and wali = '$wali'");
         if (mysqli_num_rows($cekusername) == 0)
         {   
-           $query = mysqli_query($db, "INSERT INTO user(id, name, pass, type,wali,anak,tempatlahir,tgllahir,alamat,telepon) VALUE ('$id_akun','$nama','$pass', '$posisi','$wali','$anak','$tempat','$tanggal','$alamat','$telepon')");
+           $query = mysqli_query($db, "INSERT INTO user(id, name, pass, type,wali,anak,tempatlahir,tgllahir,alamat,telepon,tanggalbuat) VALUE ('$id_akun','$nama','$pass', '$posisi','$wali','$anak','$tempat','$tanggal','$alamat','$telepon','$currentDate')");
 
-            // fungsi pengecekan $query
+            // fungsi pengecekan $query $currentDate
                 if($query) {
                     
 //echo "<script>alert('Register SUKSES. SEGERA LAKUKAN PENGISIAN PENDAFTARAN')</script>";

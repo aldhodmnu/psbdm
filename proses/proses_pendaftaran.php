@@ -2,10 +2,16 @@
 
 // import file koneksi
 include '../koneksi.php';
+include '../koneksidm.php';
 $SUDAH = "SUDAH";
 date_default_timezone_set("Asia/Bangkok");
 $currentDate = date('Y-m-d');
 $currentDate2= date('d-M-Y H:i:s');
+
+$query = mysqli_query($dm, "SELECT gelombang FROM m_semester ");
+$data = mysqli_fetch_array($query);
+$dataGEL = $data['gelombang'];
+
 // fungsi ketika tombol Simpan ditekan
 if(isset($_POST['simpan'])){
     extract($_POST);
@@ -88,10 +94,10 @@ $query = mysqli_query($db,"insert into pendaftaran
  anak_ke,jumlah_saudara,penyakit,no_hp,no_whatsapp,akun_instagram,akun_facebook,masuk_sebagai,berat_tinggi,ukuran_baju,
  rt,rw,dusun,kelurahan,kecamatan,kabupaten,provinsi,alamat,ekstrakurikuler,sekolah_asal,prestasi,kode_pos,jenjang,kesediaan,
  alasan,kaisar,informasi_dari,p_informasi,
- nama_ayah,nik_ayah,tahun_lahir_ayah,pendidikan_ayah,pernah_pondok_ayah,pesantren_ayah,pekerjaan_ayah,penghasilan_ayah,nama_ibu,nik_ibu,tahun_lahir_ibu,pendidikan_ibu,pernah_pondok_ibu,pesantren_ibu,pekerjaan_ibu,penghasilan_ibu,tanggal,status) 
+ nama_ayah,nik_ayah,tahun_lahir_ayah,pendidikan_ayah,pernah_pondok_ayah,pesantren_ayah,pekerjaan_ayah,penghasilan_ayah,nama_ibu,nik_ibu,tahun_lahir_ibu,pendidikan_ibu,pernah_pondok_ibu,pesantren_ibu,pekerjaan_ibu,penghasilan_ibu,tanggal,gelombang,status) 
  values('$id','$nama','$noijasah','$noskhun','$nisn','$nik','$nokk','$ttl','$ttg','$jk','$anak','$saudara','$penyakit','$nohp','$nowa','$ig','$fb','$mp','$bb','$sizeb','$rt','$rw','$dusun','$kel','$kec','$kab','$prov','$alamat','$exkul',
  '$sekolahasal','$prestasi','$kdpos','$jenjang','$kesediaan','$alasan','$kaisar','$infodari','$darimana',
- '$ayah','$nikayah','$ttlayah','$penayah','$mondokayah','$alumayah','$kerjaayah','$hasilayah','$ibu','$nikibu','$ttlibu','$penibu','$mondokibu','$alumibu','$kerjaibu','$hasilibu','$currentDate2','Masih Seleksi')");
+ '$ayah','$nikayah','$ttlayah','$penayah','$mondokayah','$alumayah','$kerjaayah','$hasilayah','$ibu','$nikibu','$ttlibu','$penibu','$mondokibu','$alumibu','$kerjaibu','$hasilibu','$currentDate2','$dataGEL','Masih Seleksi')");
      // memasukkan data inputan ke tabel pendaftaran
     //$queryuser = mysqli_query($db, "update user set anak='$id' where )");
 $query2 = mysqli_query ($db, "UPDATE user SET daftar = '$SUDAH',anak='$nama' WHERE id ='$id'");

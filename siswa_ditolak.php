@@ -55,7 +55,12 @@ if(isset($_SESSION['sesi'])){
                         <tr>
                             <td><?=$no++;?></td>
                             <td><?=$data['nisn'];?></td>
-                            <td class="font-weight-bold"><?=$data['nama'];?></td>
+                            
+							<td class="font-weight-bold"><?=$data['nama'];?><br>
+								<small>
+								<i class="fas fa-archway mr-1"></i> <?=$data['gelombang'];?><br>
+								<i class="fas fa-house-user mr-1"></i> <?=$data['jenjang'];?>
+								</small>
                             <td><?=$data['sekolah_asal'];?></td>
                             <td>
                                 <span class="badge badge-danger px-2">TIDAK DITERIMA</span>

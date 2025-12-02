@@ -59,7 +59,7 @@ $cekusername = mysqli_query($db, "SELECT * FROM pendaftaran WHERE id='$_SESSION[
             <!-- 1. DATA CALON SANTRI -->
             <div class="mb-5">
                 <h5 class="section-header">
-                    <i class="fas fa-user-graduate fa-lg"></i> DATA PRIBADI SANTRI
+                    <i class="fas fa-user-graduate fa-lg"></i> &nbsp&nbsp DATA PRIBADI SANTRI
                 </h5>
                 
                 <div class="row">
@@ -145,7 +145,7 @@ $cekusername = mysqli_query($db, "SELECT * FROM pendaftaran WHERE id='$_SESSION[
             <!-- 2. ALAMAT -->
             <div class="mb-5">
                 <h5 class="section-header">
-                    <i class="fas fa-map-marker-alt fa-lg"></i> ALAMAT DOMISILI
+                    <i class="fas fa-map-marker-alt fa-lg"></i>&nbsp&nbsp ALAMAT DOMISILI
                 </h5>
                 
                 <div class="form-group">
@@ -198,7 +198,7 @@ $cekusername = mysqli_query($db, "SELECT * FROM pendaftaran WHERE id='$_SESSION[
             <!-- 3. MINAT DAN SEKOLAH -->
             <div class="mb-5">
                 <h5 class="section-header">
-                    <i class="fas fa-school fa-lg"></i> DATA SEKOLAH & MINAT
+                    <i class="fas fa-school fa-lg"></i> &nbsp&nbsp DATA SEKOLAH & MINAT
                 </h5>
                 
                 <div class="row">
@@ -311,7 +311,7 @@ $cekusername = mysqli_query($db, "SELECT * FROM pendaftaran WHERE id='$_SESSION[
             <!-- 4. DATA AYAH -->
             <div class="mb-5">
                 <h5 class="section-header">
-                    <i class="fas fa-male fa-lg"></i> DATA AYAH KANDUNG
+                    <i class="fas fa-male fa-lg"></i> &nbsp&nbsp DATA AYAH KANDUNG
                 </h5>
                 
                 <div class="row">
@@ -388,7 +388,7 @@ $cekusername = mysqli_query($db, "SELECT * FROM pendaftaran WHERE id='$_SESSION[
             <!-- 5. DATA IBU -->
             <div class="mb-5">
                 <h5 class="section-header">
-                    <i class="fas fa-female fa-lg"></i> DATA IBU KANDUNG
+                    <i class="fas fa-female fa-lg"></i> &nbsp&nbsp DATA IBU KANDUNG
                 </h5>
                 
                 <div class="row">
@@ -465,7 +465,7 @@ $cekusername = mysqli_query($db, "SELECT * FROM pendaftaran WHERE id='$_SESSION[
             <!-- 6. KONTAK WALI -->
             <div class="mb-4">
                  <h5 class="section-header">
-                    <i class="fas fa-address-book fa-lg"></i> KONTAK WALI / ORANG TUA
+                    <i class="fas fa-address-book fa-lg"></i> &nbsp&nbsp KONTAK WALI / ORANG TUA
                 </h5>
                 <div class="row">
                     <div class="col-md-6 form-group">

@@ -121,6 +121,14 @@ if(isset($_SESSION['sesi'])){
                         <?php echo $data['status']; ?>
                     </div>
                 </div>
+					<div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Gelombang Pendaftaran</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <?php echo $data['gelombang']; ?>
+                    </div>
+                </div>
                 <hr>
                 
                 <div class="row">

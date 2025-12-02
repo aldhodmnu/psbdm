@@ -121,10 +121,16 @@ if(isset($_SESSION['sesi'])){
                 <div class="card-body p-0">
                     <div class="list-group list-group-flush">
                         <div class="list-group-item">
+							
                             <div class="status-label">Status Kelulusan</div>
                             <div class="status-value">
                                 <?php 
                                     $status = $data['status'];
+                                    // Jika status kosong, null, 0, atau -, set default "Masih Seleksi"
+                                    if(empty($status) || $status == '0' || $status == '-') {
+                                        $status = 'Masih Seleksi';
+                                    }
+                                    
                                     $badgeClass = 'status-warning';
                                     if(strpos(strtolower($status), 'lulus') !== false || strpos(strtolower($status), 'diterima') !== false) {
                                         $badgeClass = 'status-success';
@@ -143,6 +149,7 @@ if(isset($_SESSION['sesi'])){
                             <div class="status-label">Pembayaran Daftar Ulang</div>
                             <div class="status-value text-primary-custom"><?php echo $data2['bayarulang']; ?></div>
                         </div>
+						
                     </div>
                 </div>
             </div>
@@ -195,6 +202,12 @@ if(isset($_SESSION['sesi'])){
                         <div class="col-sm-4 text-muted">Alamat</div>
                         <div class="col-sm-8 font-weight-bold"><?php echo $data['alamat']; ?></div>
                     </div>
+					
+					<div class="data-row row">
+						 <div class="col-sm-4 text-muted">Gelombang Pendaftaran</div>
+                        <div class="col-sm-8 font-weight-bold"><?php echo $data['gelombang']; ?></div>
+                          
+                        </div>
                 </div>
             </div>
             

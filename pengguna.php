@@ -38,11 +38,11 @@ if(isset($_SESSION['sesi'])){
                         <tr>
                             <th>NO</th>
                             <th>ID</th>
-                            <th>USERNAME</th>
-                            <th>PASSWORD</th>
+                            <th>USER & PASS</th>
+                            <th>GEL & JENJANG</th>
                             <th>STATUS DAFTAR</th>
                             <th>STATUS BAYAR</th>
-                            <th>TOTAL BIAYA</th>
+                            <th>BIAYA DAFTAR</th>
                             <th>KONTAK</th>
                             <th>AKSI</th>
                         </tr>
@@ -52,7 +52,7 @@ if(isset($_SESSION['sesi'])){
                     <?php 
                     
                         //mengambil data dari tabel user 
-                        $query = mysqli_query($db, "SELECT * FROM user where alamat <>'-'");
+                        $query = mysqli_query($db, "SELECT * FROM user where alamat <>'-' order by CAST(id AS UNSIGNED)");
                        
                         // fungsi cek kolom data tabel
                         if(mysqli_num_rows($query) >0) {
@@ -65,14 +65,29 @@ if(isset($_SESSION['sesi'])){
                                 $daftars=$data['daftar'];
                                 $tst=$data['bayardaftar'];
                                 $noid=$data['id'];
+								
+						$querygel = mysqli_query($db, "SELECT * FROM pendaftaran where id='$noid'");	
+								 // loop semua data tabel 
+                            while($datagel = mysqli_fetch_assoc($querygel)){
+                                $gel=$datagel['gelombang'];
+								$jnj=$datagel['jenjang'];
                     ?>
                     
                         <tr>
                             <td><?=$no++;?></td>
                             <td><?=$data['id'];?></td>
-                            <td><?=$data['name'];?></td>
-                            <td class="text-muted small"><?=$data['pass'];?></td>
+							<td><small>
+                                <i class="fas fa-user-circle mr-1"></i> <?=$data['name'];?><br>
+								<i class="fas fa-key mr-1"></i> <?=$data['pass'];?><br>	<br>
+								<i class="fas fa-laptop-house mr-1"></i> <?=$data['tanggalbuat'];?>
+                              </small></td>
+							<td><small>
+                                <i class="fas fa-archway mr-1"></i> <?=$datagel['gelombang'];?><br>
+								<i class="fas fa-house-user mr-1"></i> <?=$datagel['jenjang'];?><br>	
+							
+                              </small></td>
                             
+							
                             <td>
                                 <?php if($daftars == "BELUM"): ?>
                                     <span class="badge badge-danger px-2">BELUM</span>
@@ -90,14 +105,16 @@ if(isset($_SESSION['sesi'])){
                             </td>                      
                    
                             <td class="font-weight-bold">Rp. <?php echo number_format($jumlah, 0, ',', '.');?></td>
+							
                             <td>
                                 <small>
                                     <i class="fas fa-phone mr-1"></i> <?=$data['telepon'];?><br>
                                     <i class="fas fa-user mr-1"></i> <?=$data['wali'];?><br>
-                                    <i class="fas fa-child mr-1"></i> <?=$data['anak'];?>
+                                    <i class="fas fa-child mr-1"></i> <?=$data['anak'];?><br>
+									
                                 </small>
                             </td>
-                            
+                         
                             <td>
                                 <?php if($tst == "BELUM"): ?>
                                     <a href="update_daftar.php?id=<?=$data['id'];?>" class="btn btn-sm btn-danger shadow-sm" onclick="return confirm('Yakin ingin membatalkan?');">
@@ -110,6 +127,7 @@ if(isset($_SESSION['sesi'])){
                         </tr>
                     <?php 
                             }
+						}
                         }else{
                             // jika false
                             // echo "<tr><td colspan='9'><center>Belum ada data!</center></td></tr>";

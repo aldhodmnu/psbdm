@@ -33,7 +33,7 @@ if(isset($_SESSION['sesi'])){
                             <th>NIK</th>
                             <th>NAMA</th>
                             <th>STATUS</th>
-                            <th>BAYAR</th>
+                            <th>BAYAR DAFTAR</th>
                             <th>BIAYA</th>
                             <th>AKSI</th>
                         </tr>
@@ -43,7 +43,7 @@ if(isset($_SESSION['sesi'])){
                     <?php  
 
                         // mengambil data tabel pendaftaran dengan kondisi status Diterima
-                        $query = mysqli_query($db, "SELECT * FROM pendaftaran WHERE status='Diterima'");
+                        $query = mysqli_query($db, "SELECT * FROM pendaftaran WHERE status='Diterima' order by CAST(id AS UNSIGNED)");
                         
                         // cek kolom dari pendaftaran
                         if(mysqli_num_rows($query) >0) {
@@ -59,7 +59,13 @@ if(isset($_SESSION['sesi'])){
                             <td><?=$no++;?></td>
                             <td><?=$data['id'];?></td>
                             <td><?=$data['nik'];?></td>
-                            <td class="font-weight-bold text-dark"><?=$data['nama'];?></td>
+                            <td class="font-weight-bold text-dark"><?=$data['nama'];?><br>
+								<small>
+								<i class="fas fa-archway mr-1"></i> <?=$data['gelombang'];?><br>
+								<i class="fas fa-house-user mr-1"></i> <?=$data['jenjang'];?>
+								</small>
+							</td>
+							
                             <td>
                                 <span class="badge badge-success px-2">DITERIMA</span>
                             </td>
