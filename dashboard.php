@@ -140,7 +140,7 @@ if(isset($_SESSION['sesi'])) {
 
 <?php
 
-include_once 'foot.php';
+include_once 'footer.php';
 
 } else {
     echo "<script>
