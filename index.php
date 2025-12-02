@@ -7,6 +7,9 @@ include 'koneksidm.php';
 date_default_timezone_set("Asia/Bangkok");
 $currentDate = date('Y-m-d');
 $currentDate2= date('d-M-Y H:i:s');
+
+if(isset($_SESSION['sesi'])) {
+    
 // Ambil total biaya dari database
 $query_total = mysqli_query($db, "SELECT SUM(nominal) as total FROM rincian_biaya");
 $data_total = mysqli_fetch_array($query_total);
@@ -20,7 +23,7 @@ $jumlah_digit = strlen($id_user);
 $angka1_str = (string)$angka1;
 $angka1_tanpa_digit = substr($angka1_str, 0, -$jumlah_digit);
 $jumlah = (int)($angka1_tanpa_digit . $id_user);
-if(isset($_SESSION['sesi'])) {
+
 $angka2 =number_format($_SESSION['sesi']);
     $header = "";
     include_once 'header.php';
