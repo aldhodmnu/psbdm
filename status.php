@@ -94,6 +94,29 @@ if(isset($_SESSION['sesi'])){
 <!-- Container -->
 <div class="container py-4">
 
+    <!-- Navigasi Menu -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body p-3">
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <a href="index.php" class="btn btn-outline-primary btn-sm">
+                    <i class="fas fa-home mr-1"></i> Beranda
+                </a>
+                <a href="pendaftaran.php" class="btn btn-outline-success btn-sm">
+                    <i class="fas fa-edit mr-1"></i> Formulir Pendaftaran
+                </a>
+                <a href="status.php" class="btn btn-primary btn-sm">
+                    <i class="fas fa-clipboard-check mr-1"></i> Status Kelulusan
+                </a>
+                <a href="biayadu.php" class="btn btn-outline-info btn-sm">
+                    <i class="fas fa-money-check-alt mr-1"></i> Biaya Daftar Ulang
+                </a>
+                <a href="logout.php" class="btn btn-outline-danger btn-sm">
+                    <i class="fas fa-sign-out-alt mr-1"></i> Logout
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <!-- Left Column: Status & Actions -->
         <div class="col-lg-4 mb-4">
