@@ -79,29 +79,6 @@ $pesan_wa_url = rawurlencode($pesan_wa_template);
 <!-- container -->
 <div class="container py-4">
     
-    <!-- Navigasi Menu -->
-    <div class="card shadow-sm border-0 mb-3">
-        <div class="card-body p-3">
-            <div class="d-flex flex-wrap justify-content-center gap-2">
-                <a href="index.php" class="btn btn-primary btn-sm">
-                    <i class="fas fa-home mr-1"></i> Beranda
-                </a>
-                <a href="pendaftaran.php" class="btn btn-outline-success btn-sm">
-                    <i class="fas fa-edit mr-1"></i> Formulir Pendaftaran
-                </a>
-                <a href="status.php" class="btn btn-outline-info btn-sm">
-                    <i class="fas fa-clipboard-check mr-1"></i> Status Kelulusan
-                </a>
-                <a href="biayadu.php" class="btn btn-outline-warning btn-sm">
-                    <i class="fas fa-money-check-alt mr-1"></i> Biaya Daftar Ulang
-                </a>
-                <a href="logout.php" class="btn btn-outline-danger btn-sm">
-                    <i class="fas fa-sign-out-alt mr-1"></i> Logout
-                </a>
-            </div>
-        </div>
-    </div>
-    
     <!-- Welcome Header -->
     <div class="d-flex align-items-center justify-content-between mb-4 bg-white p-4 rounded shadow-sm">
         <div class="d-flex align-items-center">

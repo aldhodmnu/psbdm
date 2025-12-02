@@ -127,6 +127,10 @@
                     <li class="nav-item">
                     <a class="nav-link text-white" href="pendaftaran.php"><i class="far fa-edit mr-1"></i> Pendaftaran</a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.php"><i class="fas fa-money-bill-wave mr-1"></i> Info Pembayaran</a>
+                    </li>
                 
                     <li class="nav-item">
                         <a class="nav-link text-white" href="status.php"><i class="fas fa-user-clock mr-1"></i> Status</a>
