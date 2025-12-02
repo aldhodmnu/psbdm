@@ -147,14 +147,38 @@ $pesan_wa_url = rawurlencode($pesan_wa_template);
                                     // Ambil rincian biaya dari database
                                     $query_rincian = mysqli_query($db, "SELECT * FROM rincian_biaya ORDER BY id");
                                     $subtotal = 0;
-                                    while($item = mysqli_fetch_array($query_rincian)) {
-                                        $subtotal += $item['nominal'];
+                                    $ada_data = false;
+                                    
+                                    if($query_rincian && mysqli_num_rows($query_rincian) > 0) {
+                                        $ada_data = true;
+                                        while($item = mysqli_fetch_array($query_rincian)) {
+                                            $subtotal += $item['nominal'];
                                     ?>
                                     <tr>
                                         <td class="pl-4"><?php echo $item['nama']; ?></td>
                                         <td class="text-right pr-4 text-dark font-weight-bold">Rp <?php echo number_format($item['nominal'], 0, ',', '.'); ?></td>
                                     </tr>
-                                    <?php } ?>
+                                    <?php 
+                                        }
+                                    } else {
+                                        // Data default jika tabel kosong
+                                        $default_biaya = [
+                                            ['nama' => 'Pendaftaran Tes', 'nominal' => 470000],
+                                            ['nama' => 'Medical Check Up', 'nominal' => 400000],
+                                            ['nama' => 'Psikotes & Interview', 'nominal' => 120000],
+                                            ['nama' => 'Admin Bank', 'nominal' => 5000]
+                                        ];
+                                        foreach($default_biaya as $item) {
+                                            $subtotal += $item['nominal'];
+                                    ?>
+                                    <tr>
+                                        <td class="pl-4"><?php echo $item['nama']; ?></td>
+                                        <td class="text-right pr-4 text-dark font-weight-bold">Rp <?php echo number_format($item['nominal'], 0, ',', '.'); ?></td>
+                                    </tr>
+                                    <?php 
+                                        }
+                                    }
+                                    ?>
                                     <tr class="border-top border-secondary">
                                         <td class="pl-4 font-weight-bold text-secondary">SUBTOTAL BIAYA</td>
                                         <td class="text-right pr-4 font-weight-bold text-secondary">Rp <?php echo number_format($subtotal, 0, ',', '.'); ?></td>
